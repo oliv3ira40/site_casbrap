@@ -111,18 +111,6 @@
 									</div>
 								</div>
 							</div>
-							<div class="col-md-3">
-								<div class="box_list wow fadeIn">
-									<figure>
-										<a href="#"><img src="{{ asset('pages/administrative_council/avatar-man.png') }}" class="img-fluid" alt=""></a>
-									</figure>
-									<div class="wrapper card-members">
-										<small>&nbsp;</small>
-										<h3>LUCAS EDNEI LIMA SANTANA</h3>
-										<p>SINPAF</p>
-									</div>
-								</div>
-							</div>
 						</div>
 					</div>
 				</div>
