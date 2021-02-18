@@ -60,7 +60,7 @@
                                     <div class="card-members wrapper">
                                         <small>&nbsp;</small>
                                         <small>Presidente</small>
-                                        <h3>BRUNO COELHO SOARES</h3>
+                                        <h3 class="text-uppercase">BRUNO COELHO SOARES</h3>
                                         <p>Embrapa</p>
                                     </div>
                                 </div>
@@ -72,23 +72,35 @@
                                     </figure>
                                     <div class="card-members wrapper">
                                         <small>&nbsp;</small>
-                                        <h3>GIOVANA ZAPPALA PORCARO SOUZA</h3>
+                                        <h3 class="text-uppercase">GIOVANA ZAPPALA PORCARO SOUZA</h3>
                                         <p>Embrapa</p>
                                     </div>
                                 </div>
                             </div>
-                            {{-- <div class="col-md-3">
+                            <div class="col-md-3">
                                 <div class="box_list wow fadeIn">
                                     <figure>
                                         <a href="#"><img src="{{ asset('pages/administrative_council/avatar-man.png') }}" class="img-fluid" alt=""></a>
                                     </figure>
                                     <div class="card-members wrapper">
                                         <small>&nbsp;</small>
-                                        <h3>CARLOS ALBERTO HONORATO DA SILVA</h3>
+                                        <h3 class="text-uppercase">Cássio Costa da Silva Curi</h3>
                                         <p>FAEE</p>
                                     </div>
                                 </div>
-                            </div> --}}
+                            </div>
+                            <div class="col-md-3">
+                                <div class="box_list wow fadeIn">
+                                    <figure>
+                                        <a href="#"><img src="{{ asset('pages/administrative_council/avatar-man.png') }}" class="img-fluid" alt=""></a>
+                                    </figure>
+                                    <div class="card-members wrapper">
+                                        <small>&nbsp;</small>
+                                        <h3 class="text-uppercase">AGUARDANDO</h3>
+                                        <p>SINPAF</p>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -108,8 +120,32 @@
                                     </figure>
                                     <div class="card-members wrapper">
                                         <small>&nbsp;</small>
-                                        <h3>AGUARDANDO</h3>
+                                        <h3 class="text-uppercase">AGUARDANDO</h3>
                                         <p>Embrapa</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="box_list wow fadeIn">
+                                    <figure>
+                                        <a href="#"><img src="{{ asset('pages/administrative_council/avatar-woman.png') }}" class="img-fluid" alt=""></a>
+                                    </figure>
+                                    <div class="card-members wrapper">
+                                        <small>&nbsp;</small>
+                                        <h3 class="text-uppercase">Lísian Camila Vasconcelos Britto</h3>
+                                        <p>Embrapa</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="box_list wow fadeIn">
+                                    <figure>
+                                        <a href="#"><img src="{{ asset('pages/administrative_council/avatar-man.png') }}" class="img-fluid" alt=""></a>
+                                    </figure>
+                                    <div class="card-members wrapper">
+                                        <small>&nbsp;</small>
+                                        <h3 class="text-uppercase">ANTONIO WELLINGTON SOARES DE CARVALHO</h3>
+                                        <p>FAEE</p>
                                     </div>
                                 </div>
                             </div>
@@ -122,20 +158,8 @@
                                     </figure>
                                     <div class="card-members wrapper">
                                         <small>&nbsp;</small>
-                                        <h3>FELIPE HAUBERT PILGER</h3>
+                                        <h3 class="text-uppercase">FELIPE HAUBERT PILGER</h3>
                                         <p>SINPAF</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-3">
-                                <div class="box_list wow fadeIn">
-                                    <figure>
-                                        <a href="#"><img src="{{ asset('pages/administrative_council/avatar-man.png') }}" class="img-fluid" alt=""></a>
-                                    </figure>
-                                    <div class="card-members wrapper">
-                                        <small>&nbsp;</small>
-                                        <h3>ANTONIO WELLINGTON SOARES DE CARVALHO</h3>
-                                        <p>FAEE</p>
                                     </div>
                                 </div>
                             </div>
