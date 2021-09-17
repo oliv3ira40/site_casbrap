@@ -98,6 +98,7 @@ class EvaluationController extends Controller
     function report($id) {
         $evaluation = Evaluation::find($id);
         $data = HelpEvaluation::getDataForReporting($evaluation);
+        // dd($data);
 
         return view('Admin.site.evaluation.report', compact('data'));
     }
@@ -107,7 +108,7 @@ class EvaluationController extends Controller
         
         $data = $req->all();
         $evaluation = Evaluation::find($data['evaluation_id']);
-        
+
         $data['data_downloading'] = HelpEvaluation::getDataForDownloadingReport($evaluation, $data['date_range']);
 
         if (!$data['data_downloading']) {
@@ -208,8 +209,6 @@ class EvaluationController extends Controller
     }
     function donutByQuestion(Request $req) {
         $data = $req->all();
-        
-        // $data['evaluation'] = Evaluation::find(2);
         $data['evaluation'] = Evaluation::find($data['evaluation_id']);
         
         $data['question_type'] = QuestionType::where('tag', 'radio')->first();
@@ -269,10 +268,8 @@ class EvaluationController extends Controller
         return $data['donut_morris'];
     }
     function barByQuestion(Request $req) {
-        // $data = $req->all();
-        
-        $data['evaluation'] = Evaluation::find(2);
-        // $data['evaluation'] = Evaluation::find($data['evaluation_id']);
+        $data = $req->all();
+        $data['evaluation'] = Evaluation::find($data['evaluation_id']);
         
         $data['question_type'] = QuestionType::where('tag', 'select')->first();
         $data['available_questions'] = $data['evaluation']->AvailableQuestions

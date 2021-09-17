@@ -16,88 +16,6 @@
 			
 			<div class="col-md-12" style="">
 				<ul>
-                    <li>
-						<a href="{{ asset('pages/beneficiary_form/a7_declaracao_de_conhecimento_sobre_procedimentos_de_laqueadura_e_vasectomia.pdf') }}" target="_blank" onclick="gtag('event', 'Baixar',{'event_category': 'Formulários Cadastrais', 'event_label': 'PDF_Dec_Conhecimento_laqueadura_vasectomia', 'value': 1});"><i class="icon-doc-text"></i> Declaração de Conhecimento sobre Procedimentos de Laqueadura e Vasectomia</a>
-						- <a href="{{ asset('pages/beneficiary_form/a7_declaracao_de_conhecimento_sobre_procedimentos_de_laqueadura_e_vasectomia.pdf') }}" download>
-							<i class="fa fa-download"></i>
-						</a>
-					</li>
-                    <li>
-						<a href="{{ asset('pages/beneficiary_form/declaracao-de-saude-casembrapa.pdf') }}" target="_blank" onclick="gtag('event', 'Baixar',{'event_category': 'Formulários Cadastrais', 'event_label': 'PDF_Proposta_de_Inscricao', 'value': 1});"><i class="icon-doc-text"></i> Declaração de Saúde Casembrapa</a>
-						- <a href="{{ asset('pages/beneficiary_form/declaracao-de-saude-casembrapa.pdf') }}" download>
-							<i class="fa fa-download"></i>
-						</a>
-					</li>
-                    <li>
-						<a href="{{ asset('pages/beneficiary_form/formulario-de-atualizacao-cadastral.pdf') }}" target="_blank" onclick="gtag('event', 'Baixar',{'event_category': 'Formulários Cadastrais', 'event_label': 'PDF_Proposta_de_Inscricao', 'value': 1});"><i class="icon-doc-text"></i> Formulário de Atualização Cadastral</a>
-						- <a href="{{ asset('pages/beneficiary_form/formulario-de-atualizacao-cadastral.pdf') }}" download>
-							<i class="fa fa-download"></i>
-						</a>
-					</li>
-                    <li>
-						<a href="{{ asset('pages/beneficiary_form/formulario-de-exclusao-dependente.pdf') }}" target="_blank" onclick="gtag('event', 'Baixar',{'event_category': 'Formulários Cadastrais', 'event_label': 'PDF_Proposta_de_Inscricao', 'value': 1});"><i class="icon-doc-text"></i> Formulário de Exclusão de Dependente</a>
-						- <a href="{{ asset('pages/beneficiary_form/formulario-de-exclusao-dependente.pdf') }}" download>
-							<i class="fa fa-download"></i>
-						</a>
-					</li>
-                    <li>
-						<a href="{{ asset('pages/beneficiary_form/formulario-de-inclusao-dependente.pdf') }}" target="_blank" onclick="gtag('event', 'Baixar',{'event_category': 'Formulários Cadastrais', 'event_label': 'PDF_Proposta_de_Inscricao', 'value': 1});"><i class="icon-doc-text"></i> Formulário de Inclusão de Dependente</a>
-						- <a href="{{ asset('pages/beneficiary_form/formulario-de-inclusao-dependente.pdf') }}" download>
-							<i class="fa fa-download"></i>
-						</a>
-					</li>
-                    <li>
-						<a href="{{ asset('pages/beneficiary_form/formulario-de-inscricao.pdf') }}" target="_blank" onclick="gtag('event', 'Baixar',{'event_category': 'Formulários Cadastrais', 'event_label': 'PDF_Proposta_de_Inscricao', 'value': 1});"><i class="icon-doc-text"></i> Formulário de Inscrição</a>
-						- <a href="{{ asset('pages/beneficiary_form/formulario-de-inscricao.pdf') }}" download>
-							<i class="fa fa-download"></i>
-						</a>
-					</li>
-                    <li>
-						<a href="{{ asset('pages/beneficiary_form/solicitacao-de-desligamento-titular.pdf') }}" target="_blank" onclick="gtag('event', 'Baixar',{'event_category': 'Formulários Cadastrais', 'event_label': 'PDF_Proposta_de_Inscricao', 'value': 1});"><i class="icon-doc-text"></i> Solicitação de Desligamento Títular</a>
-						- <a href="{{ asset('pages/beneficiary_form/solicitacao-de-desligamento-titular.pdf') }}" download>
-							<i class="fa fa-download"></i>
-						</a>
-					</li>
-                    <li>
-						<a href="{{ asset('pages/beneficiary_form/CASEMBRAPA_REEMBOLSO_2020.pdf') }}" target="_blank" onclick="gtag('event', 'Baixar',{'event_category': 'Formulários Cadastrais', 'event_label': 'PDF_Solicitacao_de_reembolso_de_despesas', 'value': 1});"><i class="icon-doc-text"></i> Solicitação de Reembolso de Despesas</a>
-						- <a href="{{ asset('pages/beneficiary_form/CASEMBRAPA_REEMBOLSO_2020.pdf') }}" download>
-							<i class="fa fa-download"></i>
-						</a>
-					</li>
-                    <li>
-						<a href="{{ asset('pages/beneficiary_form/Termo-de-Compromisso-para-Dependentes-Maiores-de-21-2017.pdf') }}" target="_blank" onclick="gtag('event', 'Baixar',{'event_category': 'Formulários Cadastrais', 'event_label': 'PDF_compromisso_dependentes_maior_21', 'value': 1});"><i class="icon-doc-text"></i> Termo de Compromisso para Dependentes Maiores de 21</a>
-						- <a href="{{ asset('pages/beneficiary_form/Termo-de-Compromisso-para-Dependentes-Maiores-de-21-2017.pdf') }}" download>
-							<i class="fa fa-download"></i>
-						</a>
-					</li>
-                    <li>
-						<a href="{{ asset('pages/beneficiary_form/termo-de-opcao-de-manutencao-viuvoa.pdf') }}" target="_blank" onclick="gtag('event', 'Baixar',{'event_category': 'Formulários Cadastrais', 'event_label': 'PDF_Proposta_de_Inscricao', 'value': 1});"><i class="icon-doc-text"></i> Termo de Opção de Manutenção - Víuvo(a)</a>
-						- <a href="{{ asset('pages/beneficiary_form/termo-de-opcao-de-manutencao-viuvoa.pdf') }}" download>
-							<i class="fa fa-download"></i>
-						</a>
-					</li>
-                    <li>
-						<a href="{{ asset('pages/beneficiary_form/termo-de-opcao-de-permanencia-aposentado.pdf') }}" target="_blank" onclick="gtag('event', 'Baixar',{'event_category': 'Formulários Cadastrais', 'event_label': 'PDF_Proposta_de_Inscricao', 'value': 1});"><i class="icon-doc-text"></i> Termo de Opção de Permanência - Aposentado </a>
-						- <a href="{{ asset('pages/beneficiary_form/termo-de-opcao-de-permanencia-aposentado.pdf') }}" download>
-							<i class="fa fa-download"></i>
-						</a>
-					</li>
-                    <li>
-						<a href="{{ asset('pages/beneficiary_form/termo-de-opcao-de-permanencia-contrato-suspenso.pdf') }}" target="_blank" onclick="gtag('event', 'Baixar',{'event_category': 'Formulários Cadastrais', 'event_label': 'PDF_Proposta_de_Inscricao', 'value': 1});"><i class="icon-doc-text"></i> Termo de Opção de Permanência - Contrato Suspenso </a>
-						- <a href="{{ asset('pages/beneficiary_form/termo-de-opcao-de-permanencia-contrato-suspenso.pdf') }}" download>
-							<i class="fa fa-download"></i>
-						</a>
-					</li>
-                    <li>
-						<a href="{{ asset('pages/beneficiary_form/termo-de-opcao-de-permanencia-demitido-sem-justa-causa.pdf') }}" target="_blank" onclick="gtag('event', 'Baixar',{'event_category': 'Formulários Cadastrais', 'event_label': 'PDF_Proposta_de_Inscricao', 'value': 1});"><i class="icon-doc-text"></i> Termo de Opção de Permanência - Demitido sem Justa Causa </a>
-						- <a href="{{ asset('pages/beneficiary_form/termo-de-opcao-de-permanencia-demitido-sem-justa-causa.pdf') }}" download>
-							<i class="fa fa-download"></i>
-						</a>
-					</li>
-                   
-
-<!--  LINKS ANTIGOS   
-
 					<li>
 						<a href="{{ asset('pages/beneficiary_form/a1_proposta_de_inscricao-Selo-ANS.pdf') }}" target="_blank" onclick="gtag('event', 'Baixar',{'event_category': 'Formulários Cadastrais', 'event_label': 'PDF_Proposta_de_Inscricao', 'value': 1});"><i class="icon-doc-text"></i> Proposta de Inscrição</a>
 						- <a href="{{ asset('pages/beneficiary_form/a1_proposta_de_inscricao-Selo-ANS.pdf') }}" download>
@@ -175,7 +93,7 @@
 						- <a href="{{ asset('pages/beneficiary_form/Termo-de-Opcao-de-Permanencia-PDI-julho-2019.pdf') }}" download>
 							<i class="fa fa-download"></i>
 						</a>
-					</li> -->
+					</li>
 				</ul>
 			</div>
 

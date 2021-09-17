@@ -14,29 +14,22 @@
 						</h5>
 						
 						<div class="p-b-10">
-							<a href="tel:6131810010" target="_blank">
+							<a href="tel:6131810010">
 								<strong>
-								<br>	+55 (61) 3181-0010 (Distrito Federal)
+									+55 (61) 3181-0010
 								</strong>
-							</a><br>
-							<a href="tel:08009405560" target="_blank">
+							</a> /
+							<a href="tel:08009405560">
 								<strong>
-									<br> 0800 940 5560 (Demais regiões)
+									0800 940 5560
 								</strong>
-							</a><br>
-							<a href="https://t.me/Casembrapa_bot" target="_blank">
-								<strong>
-									<br> Telegram: Casembrapa_bot
-								</strong>
-							</a><br>
-							<a href="mailto:relacionamento.institucional@casembrapa.org.br" target="_blank">
+							</a>
+						</div>
+						<a class="display-block p-b-10" href="mailto:relacionamento.institucional@casembrapa.org.br">
 							<strong>
-							<br>	atendimento@casembrapa.org.br
+								atendimento@casembrapa.org.br
 							</strong>
 						</a>
-						
-						</div>
-					
 
 						<p class="p-t-10 m-b-10">
 							PqEB - Av. W3 Norte (Final) S/N. Asa Norte
@@ -119,17 +112,17 @@
 								</a>
 							</li>
 							<li style="padding-top: 15px;" class="p-r-10 li_social_icons">
-								<a href="https://www.instagram.com/casembrapa/" target="_blank">
+								<a href="https://www.instagram.com/explore/locations/2166466996699847/casembrapa/">
 									<i class="social-icons-footer fa fa-instagram"></i>
 								</a>
 							</li>
 							<li style="padding-top: 15px;" class="p-r-10 li_social_icons">
-								<a href="https://www.facebook.com/casembrapa/" target="_blank">
+								<a href="https://www.facebook.com/casembrapa/">
 									<i class="social-icons-footer fa fa-facebook-official"></i>
 								</a>
 							</li>
 							<li style="padding-top: 15px;" class="p-r-10 li_social_icons">
-								<a href="https://www.youtube.com/channel/UCx_p5r4sqDWr3L7GKWPLGZw" target="_blank">
+								<a href="https://www.youtube.com/channel/UCx_p5r4sqDWr3L7GKWPLGZw">
 									<i class="social-icons-footer fa fa-youtube"></i>
 								</a>
 							</li>

@@ -175,33 +175,33 @@
 						@endif
 					</div>
 				</div>
-				<!--<div class="col-md-6">-->
-				<!--	<div style="padding: 30px 15px 15px 30px; min-height: 104px;" class="strip_list wow fadeIn">-->
-				<!--		@if (\Auth::user())-->
-				<!--			<a href="{{ route("site.registration_update.view") }}">-->
-				<!--				<h3>-->
-				<!--					<i class="pe-7s-id p-r-10"></i>-->
-				<!--					ATUALIZAÇÃO CADASTRAL-->
-				<!--				</h3>-->
+				<div class="col-md-6">
+					<div style="padding: 30px 15px 15px 30px; min-height: 104px;" class="strip_list wow fadeIn">
+						@if (\Auth::user())
+							<a href="{{ route("site.registration_update.view") }}">
+								<h3>
+									<i class="pe-7s-id p-r-10"></i>
+									ATUALIZAÇÃO CADASTRAL
+								</h3>
 
-				<!--				<p>-->
-				<!--					Para atualização Cadastral, clique aqui-->
-				<!--				</p>-->
-				<!--			</a>-->
-				<!--		@else-->
-				<!--			<a href="{{ route('site.page_login') }}">-->
-				<!--				<h3>-->
-				<!--					<i class="pe-7s-id p-r-10"></i>-->
-				<!--					ATUALIZAÇÃO CADASTRAL-->
-				<!--				</h3>-->
+								<p>
+									Para atualização Cadastral, clique aqui
+								</p>
+							</a>
+						@else
+							<a href="{{ route('site.page_login') }}">
+								<h3>
+									<i class="pe-7s-id p-r-10"></i>
+									ATUALIZAÇÃO CADASTRAL
+								</h3>
 	
-				<!--				<p>-->
-				<!--					Para atualização Cadastral, clique aqui-->
-				<!--				</p>-->
-				<!--			</a>-->
-				<!--		@endif-->
-				<!--	</div>-->
-				<!--</div>-->
+								<p>
+									Para atualização Cadastral, clique aqui
+								</p>
+							</a>
+						@endif
+					</div>
+				</div>
 			</div>
 		</div>
 

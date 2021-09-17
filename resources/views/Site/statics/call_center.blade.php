@@ -23,11 +23,8 @@
 								<a href="mailto:atendimento@casembrapa.org.br">atendimento@casembrapa.org.br</a><br>
 							</li>
 							<li>
-								<a href="tel:6131810010">+55 (61) 3181-0010 (Distrito Federal)</a> <br>
-								<a href="tel:08009405560">0800 940 5560 (Demais regiões)</a>
-							</li>
-							<li>
-								<a target="_blank" href=" https://telegram.me/casembrapa_bot">Telegram</a>
+								<a href="tel:6131810010">+55 (61) 3181-0010</a> /
+								<a href="tel:08009405560">0800 940 5560</a>
 							</li>
 							<li>
 								<p>Caixa Postal: 10811, <br>CEP 70306-970 PqEB <br>Av. W3 Norte (Final) S/N. <br> Prédio da Casembrapa. <br>Brasília-DF</p>

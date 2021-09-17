@@ -128,7 +128,7 @@
 					@endif
 					<div class="col-md-4">
 						<a href="https://www.youtube.com/watch?v=7l5kx97EhqY" target="_blank">
-							<iframe width="560" height="100%" src="https://www.youtube.com/embed/CIIefBGaEW4" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+							<iframe width="560" height="100%" src="https://www.youtube.com/embed/xUWUFZy0aSs" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 							{{-- <div style="padding: 52px 45px 52px 45px;" class="box_feat box_open_plan custom-box-feat mb-0">
 								<i style="font-size: 70px;" class="icon-youtube-play"></i>
 								<h3 style="font-size: 20px;" class="title_open_plan">
@@ -192,7 +192,7 @@
 							<p>
 								Pronto Atendimento
 							</p>
-							<a target="_blank" href="https://nav.dasa.com.br/" class="btn_1">Acessar</a>
+							<a target="_blank" href="https://www.liviasaude.com.br/" class="btn_1">Acessar</a>
 						</div>
 					</div>
 				</div>
@@ -354,7 +354,7 @@
 						<article class="blog wow fadeIn">
 							<div class="row no-gutters">
 								@if ($last_posts->first()->image_spotlight == null AND $last_posts->first()->image_banner == null)
-    								<div class="col-md-12">
+									<div class="col-md-12">
 										<div class="post_info" style="min-height: auto;">
 											<small>
 												{{ $last_posts->first()->created_at->format('d-m-Y') }}
@@ -414,11 +414,11 @@
 												<a href="{{ route('site.posts.detail', $last_posts->first()->id) }}">Leia mais</a>
 											</p>
 		
-											<ul>
-												{{-- <li style="float: unset; padding-left: 15px;">
+											{{-- <ul>
+												<li style="float: unset; padding-left: 15px;">
 													Autoria: {{ HelpAdmin::completName($last_posts->first()->Author) }}
-												</li> --}}
-											</ul>
+												</li>
+											</ul> --}}
 										</div>
 									</div>
 								@endif

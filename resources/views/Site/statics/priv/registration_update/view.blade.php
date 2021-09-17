@@ -245,9 +245,11 @@
 					<div class="row m-t-10">
 						<div class="col-md-12">
 							<h3>
-								Termo de Responsabilidade Regulamentar,<a target="_blank" href="{{ asset("/pages/priv/registration_update/termo-de-responsabilidade-das-regras-do-regulamento.pdf") }}"><strong> Clique aqui</strong></a> para acessar.
+								Termo de Responsabilidade Regulamentar
 							</h3>
-		
+							
+							<a target="_blank" href="{{ asset("/pages/priv/registration_update/termo-de-responsabilidade-das-regras-do-regulamento.pdf") }}">Clique aqui</a> para acessar o regulamento
+							<br>
 							{!! Form::checkbox('regulatory_liability_term', true, false, ['class'=>'form-control m-t-10', 'id'=>'regulatory_liability_term', 'style'=>'width: auto; display: unset; min-height: auto; height: auto;']) !!}
 							<label for="regulatory_liability_term" style="display: inline;">
 								<strong>

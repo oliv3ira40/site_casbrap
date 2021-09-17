@@ -12,7 +12,7 @@
         <div class="container padding_t_60 padding_b_60">
 			<div class="row">
                 <div class="col-md-6">
-                    <a target="_blank" href="https://nav.dasa.com.br/">
+                    <a target="_blank" href="https://www.liviasaude.com.br">
                         <div class="box_feat" style="padding: 20px 45px 20px 45px;">
                             <i class="pe-7s-headphones" style="font-size: 50px; color: #1ab892;"></i>
                             <h3 class="m-t-10">Telemedicina</h3>
@@ -22,10 +22,6 @@
                         </div>
                     </a>
 
-                    
-                    
-                    
-                    
                     @foreach ($data['first_post'] as $post)
                         <div class="box_list home">
                             <figure style="height: auto;">
@@ -135,7 +131,7 @@
                             <h4 class="mb-0" style="font-size: 20px;">PLANO ABERTO</h4>
                         </div>
     
-                        <iframe style="width: 100%; height: 262px; padding: 0px 0px 0px 0px;" src="https://www.youtube.com/embed/CIIefBGaEW4" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <iframe style="width: 100%; height: 262px; padding: 0px 0px 0px 0px;" src="https://www.youtube.com/embed/94ZlCBDg05g" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     </div>
 
                     {{-- Casembrapa responde: --}}

@@ -30,22 +30,6 @@
 			</div>
 
 			<div class="row">
-
-				<div class="col-lg-4">
-					<div style="min-height: 188px;" class="box_badges">
-						<h3 class="text-left">PERÍODO JAN A DEZ DE 2020</h3><BR>
-						<p class="text-left">
-							<a href="{{ asset('pages/financial_statement/2020/01_Demonstracoes_Financeiras_2020.pdf') }}" target="_blank" onclick="gtag('event', 'Baixar',{'event_category': 'Demonstrativo Financeiro', 'event_label': '01_Demonstracoes_financeiras_2020', 'value': 1});"> <i class="fa fa-file-pdf-o" aria-hidden="true"></i> Demonstrações Financeiras </a><br>
-
-							<a href="{{ asset('pages/financial_statement/2020/02_Relatorio_de_Administracao_Casembrapa_2020.pdf') }}" target="_blank" onclick="gtag('event', 'Baixar',{'event_category': 'Demonstrativo Financeiro', 'event_label': '02_Relatorio_de_Administracao_Casembrapa_2020', 'value': 1});"> <i class="fa fa-file-pdf-o" aria-hidden="true"></i> Relatório Administrativo </a><br>
-
-							<a href="{{ asset('pages/financial_statement/2020/03_Relatorio_Auditores_Independentes_2020.pdf') }}" target="_blank" onclick="gtag('event', 'Baixar',{'event_category': 'Demonstrativo Financeiro', 'event_label': '03_Relatorio_Auditores_Independentes_2020', 'value': 1});"> <i class="fa fa-file-pdf-o" aria-hidden="true"></i> Relatório dos Auditores Independentes </a><br>
-
-					       <a href="{{ asset('pages/financial_statement/2020/PARECER-ANUAL-DO-CONSELHO-FISCAL-SOBRE-AS-DEMONSTRACOES-CONTABEIS-DE-2020.pdf') }}" target="_blank" onclick="gtag('event', 'Baixar',{'event_category': 'Demonstrativo Financeiro', 'event_label': 'PARECER-ANUAL-DO-CONSELHO-FISCAL-SOBRE-AS-DEMONSTRACOES-CONTABEIS-DE-2020', 'value': 1});"> <i class="fa fa-file-pdf-o" aria-hidden="true"></i> Parecer anual do conselho fiscal</a>
-						</p>
-					</div>
-				</div>
-			   
 				<div class="col-lg-4">
 					<div style="min-height: 188px;" class="box_badges">
 						<h3 class="text-left">PERÍODO JAN A DEZ DE 2019</h3><BR>

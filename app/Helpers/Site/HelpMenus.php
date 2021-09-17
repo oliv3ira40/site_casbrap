@@ -76,7 +76,7 @@
                             'permission'=>'#',
                             'label'=>'Regulamento',
                             'url'=>'#',
-                            'file'=>'pages/regulation/Regulamento_Casembrapa.pdf',
+                            'file'=>'pages/regulation/regulamento-revisado-pelo-juridico-e-equipe-casembrapa-aprovado-cad-2021-versao-final-para-publicacao.pdf',
                             'target'=>'_blank',
                         ],
                         [
@@ -135,17 +135,6 @@
                             'file'=>'#',
                             'target'=>'',
                         ],
-                        [
-                            'permission'=>'#',
-                            'label'=>'Transparência Casembrapa',
-                            'url'=>'site.posts.detail, 312',
-                            'file'=>'#',
-                            'target'=>'',
-                        ],
-                       
-                      
-                      
-                       
                     ],
                 ],
                 // Fale Conosco

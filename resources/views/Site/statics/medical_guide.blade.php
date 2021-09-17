@@ -60,29 +60,29 @@
 							<div class="col-md-3">
 								<div class="box_list wow fadeIn">
 									<figure>
-										<a href="http://amaibsb.com.br/buscar-profissionais/" target="_blank"><img src="{{ asset('pages/medical_guide/amai.png') }}" class="img-fluid" alt=""></a>
+										<a href="http://amaibsb.com.br/" target="_blank"><img src="{{ asset('pages/medical_guide/amai.png') }}" class="img-fluid" alt=""></a>
 									</figure>
 									<div class="wrapper card-members">
-										<a href="http://amaibsb.com.br/buscar-profissionais/" target="_blank" target="_blank"><CENTER><h3>AMAI</h3></CENTER></a>
+										<a href="http://amaibsb.com.br/" target="_blank" target="_blank"><CENTER><h3>AMAI</h3></CENTER></a>
 									</div>
 								</div>
 							</div>
 							<div class="col-md-3">
 								<div class="box_list wow fadeIn">
 									<figure>
-										<a href="https://www.encontreseumedico.com.br/" target="_blank"><img src="{{ asset('pages/medical_guide/amhp.png') }}" class="img-fluid" alt=""></a>
+										<a href="https://www.amhp.com.br/" target="_blank"><img src="{{ asset('pages/medical_guide/amhp.png') }}" class="img-fluid" alt=""></a>
 									</figure>
 									<div class="wrapper card-members">
-										<a href="https://www.encontreseumedico.com.br/" target="_blank"><CENTER><h3>AMHP</h3></CENTER></a>
+										<a href="https://www.amhp.com.br/" target="_blank"><CENTER><h3>AMHP</h3></CENTER></a>
 									</div></div>
 							</div>
 							<div class="col-md-3">
 								<div class="box_list wow fadeIn">
 									<figure>
-										<a href="https://www.coego.com.br/Home/Cooperados" target="_blank"><img src="{{ asset('pages/medical_guide/coego.png') }}" class="img-fluid" alt=""></a>
+										<a href="http://www.coego.com.br/" target="_blank"><img src="{{ asset('pages/medical_guide/coego.png') }}" class="img-fluid" alt=""></a>
 									</figure>
 									<div class="wrapper card-members">
-										<a href="https://www.coego.com.br/Home/Cooperados" target="_blank"><CENTER><h3>COEGO</h3></CENTER></a>
+										<a href="http://www.coego.com.br/" target="_blank"><CENTER><h3>COEGO</h3></CENTER></a>
 									</div>
 								</div>
 							</div>

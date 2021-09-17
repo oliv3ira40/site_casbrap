@@ -72,7 +72,7 @@
                                     </figure>
                                     <div class="card-members wrapper">
                                         <small>&nbsp;</small>
-                                        <h3 class="text-uppercase">TATIANA JUNQUEIRA SALLES</h3>
+                                        <h3 class="text-uppercase">GIOVANA ZAPPALA PORCARO SOUZA</h3>
                                         <p>Embrapa</p>
                                     </div>
                                 </div>

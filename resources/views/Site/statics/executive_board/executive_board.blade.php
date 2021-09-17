@@ -27,7 +27,7 @@
                 <div class="row justify-content-between">
                     <div class="col-md-12 custom-main_title">
                         <p align="justify">
-                            A Diretoria Executiva é o órgão de administração da Casembrapa, ao qual compete propor e executar diretrizes e políticas aprovadas pelo Conselho de Administração, além dos demais atos necessários à gestão, nos termos do Estatuto e do Regulamento. É composta por três membros: Presidente, Diretor Financeiro e Diretor Administrativo.
+                            A Diretoria Executiva é o órgão de administração da Casembrapa, ao qual compete propor e executar diretrizes e políticas aprovadas pelo Conselho de Administração, além dos demais atos necessários à gestão, nos termos do Estatuto e do Regulamento. É composta por três membros: Presidente, Diretor Financeiro e Diretora Administrativa.
                         </p>
                     </div>
                 </div>
