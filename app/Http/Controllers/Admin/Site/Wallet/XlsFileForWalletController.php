@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
+use Illuminate\Support\Facades\Storage;
 
 use App\Models\Admin\User;
 use App\Models\Site\Wallet\CasembrapaWallet;
@@ -24,12 +25,14 @@ class XlsFileForWalletController extends Controller
 
     function updateCasembrapaUser() {
         set_time_limit(999999999999999999);
-        ini_set('memory_limit', '256M');
+        ini_set('memory_limit', '-1');
 
         // $old_wallets = CasembrapaWallet::whereNotBetween('created_at', [date('Y-m-d').' 00 00:00', date('Y-m-d').' 23 59:59']);
         // $new_wallets = CasembrapaWallet::whereBetween('created_at', [date('Y-m-d').' 00 00:00', date('Y-m-d').' 23 59:59']);
+        // $old_wallets->delete();
+        // $new_wallets->delete();
         // dd($old_wallets->delete(), $new_wallets->delete());
-
+        
         dd(CasembrapaWallet::all());
 
         $inputFileName = HelpAdmin::getStorageUrl().'wallets/xls/casembrapa/casembrapa.xls';
@@ -43,8 +46,6 @@ class XlsFileForWalletController extends Controller
             
             array_push($data, array_shift($n));
         }
-
-        // dd($data);
 
         $count_registers = [
             'new_users' => 0,
@@ -71,7 +72,8 @@ class XlsFileForWalletController extends Controller
                     'cpf' => $value['C'],
                     'date_of_birth' => $value_format_date_birth,
                     'type' => $value['F'],
-                    'password' => bcrypt($value['C']),
+                    'password' => bcrypt('2q8fu8az'),
+                    // 'password' => bcrypt($value['C']),
                     'group_id' => '11',
                     'email' => $value['K'],
                 ];
@@ -117,19 +119,23 @@ class XlsFileForWalletController extends Controller
                     'email' => $value['K'],
                 ];
                 $user_wallet = User::where('cpf', $wallet_register['cpf'])->first();
-                // if ($user_wallet) $wallet_register['user_id'] = $user_wallet->id;
+
+                do {
+                    $wallet_register['file_name'] = str_random(20);
+                    $exit_file_name = CasembrapaWallet::where('file_name', $wallet_register['file_name'])->first();
+                } while ($exit_file_name != null);
+
                 CasembrapaWallet::create($wallet_register);
             }
         }
 
-        $old_wallets = CasembrapaWallet::whereNotBetween('created_at', [date('Y-m-d').' 00 00:00', date('Y-m-d').' 23 59:59']);
-        $new_wallets = CasembrapaWallet::whereBetween('created_at', [date('Y-m-d').' 00 00:00', date('Y-m-d').' 23 59:59']);
+        // $old_wallets = CasembrapaWallet::whereNotBetween('created_at', [date('Y-m-d').' 00 00:00', date('Y-m-d').' 23 59:59']);
+        // $new_wallets = CasembrapaWallet::whereBetween('created_at', [date('Y-m-d').' 00 00:00', date('Y-m-d').' 23 59:59']);
         
-        $count_registers['new_wallets'] = $old_wallets->count();
-        $count_registers['deleteds_wallets'] = $new_wallets->count();
+        // $count_registers['new_wallets'] = $old_wallets->count();
+        // $count_registers['deleteds_wallets'] = $new_wallets->count();
         
-        $old_wallets->delete();
-
+        // $old_wallets->delete();
 
         dd('FIM', User::where('group_id', '11')->count(), CasembrapaWallet::count(), $count_registers);
     }
@@ -139,16 +145,22 @@ class XlsFileForWalletController extends Controller
 
     function updateCassiWallet() {
         set_time_limit(999999999999999999);
-        ini_set('memory_limit', '256M');
+        ini_set('memory_limit', '-1');
 
         // $old_wallets = CassiWallet::whereNotBetween('created_at', [date('Y-m-d').' 00 00:00', date('Y-m-d').' 23 59:59']);
         // $new_wallets = CassiWallet::whereBetween('created_at', [date('Y-m-d').' 00 00:00', date('Y-m-d').' 23 59:59']);
+        // $old_wallets->delete();
+        // $new_wallets->delete();
         // dd($old_wallets->delete(), $new_wallets->delete());
 
         dd(CassiWallet::all());
         // CassiWallet
 
-        $inputFileName = HelpAdmin::getStorageUrl().'wallets/xls/cassi/cassi.xlsx';
+
+        // $inputFileName = HelpAdmin::getStorageUrl().'wallets/xls/casembrapa/casembrapa.xls';
+
+
+        $inputFileName = HelpAdmin::getStorageUrl().'wallets/xls/cassi/cassi.xls';
         $spreadsheet = \PhpOffice\PhpSpreadsheet\IOFactory::load($inputFileName);
 
         $total_columns = $spreadsheet->getActiveSheet()->getHighestDataRow();
@@ -160,7 +172,13 @@ class XlsFileForWalletController extends Controller
             array_push($data, array_shift($n));
         }
 
-        // dd($data);
+        $data = array_slice($data, 0, (array_key_last($data) - 1));
+        // unset($data[0]);
+        unset($data[array_key_last($data)]);
+        unset($data[array_key_last($data)]);
+        // unset($data[array_key_last($data)]);
+        // dd($data[0], $data[array_key_last($data)]);
+        // dd(array_key_last($data));
 
         $count_registers = [
             'new_wallets' => 0,
@@ -184,23 +202,25 @@ class XlsFileForWalletController extends Controller
                 'shelf_life' => $value['K'],
                 'lot' => $value['L'],
             ];
-            // dd($wallet_register);
 
             $user_wallet = User::where('cpf', $wallet_register['cpf'])->first();
             if ($user_wallet) $wallet_register['user_id'] = $user_wallet->id;
-            
-            // dd($wallet_register);
 
+            do {
+                $wallet_register['file_name'] = str_random(20);
+                $exit_file_name = CassiWallet::where('file_name', $wallet_register['file_name'])->first();
+            } while ($exit_file_name != null);
+            
             CassiWallet::create($wallet_register);
         }
 
-        $old_wallets = CassiWallet::whereNotBetween('created_at', [date('Y-m-d').' 00 00:00', date('Y-m-d').' 23 59:59']);
-        $new_wallets = CassiWallet::whereBetween('created_at', [date('Y-m-d').' 00 00:00', date('Y-m-d').' 23 59:59']);
+        // $old_wallets = CassiWallet::whereNotBetween('created_at', [date('Y-m-d').' 00 00:00', date('Y-m-d').' 23 59:59']);
+        // $new_wallets = CassiWallet::whereBetween('created_at', [date('Y-m-d').' 00 00:00', date('Y-m-d').' 23 59:59']);
         
-        $count_registers['new_wallets'] = $old_wallets->count();
-        $count_registers['deleteds_wallets'] = $new_wallets->count();
+        // $count_registers['new_wallets'] = $old_wallets->count();
+        // $count_registers['deleteds_wallets'] = $new_wallets->count();
         
-        $old_wallets->delete();
+        // $old_wallets->delete();
 
         dd('FIM', CassiWallet::count(), $count_registers);
     }

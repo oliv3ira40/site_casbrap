@@ -24,16 +24,14 @@ use App\Models\Site\Evaluation\QuestionType;
 use App\Models\Site\Evaluation\ResponseReceived;
 use App\Models\Site\Evaluation\ResponsibleForTheEvaluation;
 
-class CompletedEvaluationController extends Controller
-{
+class CompletedEvaluationController extends Controller {
     function new($evaluation_id) {
-        // dd(User::where('compliant', 0)->skip(29)->first());
         $data['evaluation'] = Evaluation::find($evaluation_id);
         $data['images_for_evaluation'] = $data['evaluation']->ImagesForEvaluation->sortBy('position');
         $data['evaluation_settings'] = $data['evaluation']->EvaluationSettings;
         $data['question_topics'] = $data['evaluation']->QuestionTopics->sortBy('position');
-        $data['all_questions'] = $data['evaluation']->AvailableQuestions;
-        // $data['no_topic_question'] = $data['all_questions']->where('question_topic_id', null);
+        $data['all_questions'] = $data['evaluation']->AvailableQuestions->sortBy('position');
+        $data['no_topic_question'] = $data['all_questions']->where('question_topic_id', null);
         $data['quest_with_confirm_text'] = $data['all_questions']->where('confirmation_text', '!=', null)->pluck('id')->toArray();
         $data['quest_w_conf_t_required_reading'] = $data['all_questions']
             ->where('confirmation_text', '!=', null)
@@ -75,6 +73,7 @@ class CompletedEvaluationController extends Controller
             }
         }
 
+        // dd($data['no_topic_question']);
         return view('Site.evaluation.completed_evaluation.new', compact('data'));
     }
     function save(ReqSave $req) {

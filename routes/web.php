@@ -3,6 +3,7 @@
 use App\Http\Controllers\Peoples\AdministratorController;
 use App\Models\Admin\Calleds\Product;
 use App\Models\Admin\Calleds\ProductSeveritie;
+use App\Models\Site\RegistrationUpdate;
 
 Route::group(['middleware' => ['VerifyUserPermissions', 'CheckDefinitivePassword']], function(){
 
@@ -198,6 +199,27 @@ Route::group(['middleware' => ['VerifyUserPermissions', 'CheckDefinitivePassword
                 'Admin\Site\Wallet\WalletController@sendDigitalWalletsToBeneficiaries')
                 ->name('adm.send_digital_wallets_to_beneficiaries');
         // Wallets
+
+        // Intranet
+            Route::get('adm/regulamento-casembrapa',
+                'Admin\Intranet\IntranetController@file1')
+                ->name('adm.file_1');
+            Route::get('adm/estatuto-social',
+                'Admin\Intranet\IntranetController@file2')
+                ->name('adm.file_2');
+            Route::get('adm/quadro-pessoal',
+                'Admin\Intranet\IntranetController@file3')
+                ->name('adm.file_3');
+            Route::get('adm/ramais',
+                'Admin\Intranet\IntranetController@file4')
+                ->name('adm.file_4');
+        // Intranet
+
+        // Registration Update
+            Route::match(['get', 'post'], 'adm/atualizacao-cadastral',
+                'Admin\Site\RegistrationUpdateController@list')
+                ->name('adm.registration_update.list');
+        // Registration Update
     // ADMIN
 
     // SITE
@@ -533,6 +555,9 @@ Route::group(['middleware' => ['VerifyUserPermissions', 'CheckDefinitivePassword
             Route::post('/cadastral-update-send', 'Site\Form\CadastralUpdateController@send')->name('site.cadastral_update.send');
             Route::post('/ombudsman-send', 'Site\Form\OmbudsmanController@send')->name('site.ombudsman.send');
             Route::post('/contact-form-2-send', 'Site\Form\ContactForm2Controller@send')->name('site.contact_form_2.send');
+
+            Route::match(["get", "post"], '/atualizacao-cadastral', 'Site\Form\RegistrationUpdateController@view')->name('site.registration_update.view');
+            Route::post('/registration-update-save', 'Site\Form\RegistrationUpdateController@save')->name('site.registration_update.save');
         // FORMS
 
         // RECAPTCHA

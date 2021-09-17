@@ -159,16 +159,36 @@ $(function()
         applyClass: 'btn-secondary',
         cancelClass: 'btn-primary'
     });
+
     $('.input-daterange-timepicker').daterangepicker({
         timePicker: true,
-        format: 'MM/DD/YYYY h:mm A',
-        timePickerIncrement: 30,
-        timePicker12Hour: true,
+        format: 'MM/DD/YYYY HH:mm',
+        timePickerIncrement: 10,
+        timePicker24Hour: true,
         timePickerSeconds: false,
         buttonClasses: ['btn', 'btn-sm'],
-        applyClass: 'btn-secondary',
-        cancelClass: 'btn-primary'
+        applyClass: 'btn-primary',
+        cancelClass: 'btn-danger',
+        autoUpdateInput: false,
+        locale: {
+            format: 'MM/DD/YYYY HH:mm',
+            applyLabel: 'Aplicar',
+            cancelLabel: 'Limpar',
+            fromLabel: 'Até',
+            toLabel: 'de',
+            customRangeLabel: 'Custom',
+            daysOfWeek: ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sab'],
+            monthNames: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],
+            firstDay: 0
+        }
     });
+    $('.input-daterange-timepicker').on('apply.daterangepicker', function(ev, picker) {
+        $(this).val(picker.startDate.format('MM/DD/YYYY HH:mm') + ' - ' + picker.endDate.format('MM/DD/YYYY HH:mm'));
+    });
+    $('.input-daterange-timepicker').on('cancel.daterangepicker', function(ev, picker) {
+        $(this).val('');
+    });
+
     $('.input-limit-datepicker').daterangepicker({
         format: 'MM/DD/YYYY',
         minDate: '06/01/2016',

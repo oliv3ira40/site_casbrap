@@ -26,11 +26,19 @@
 
 			return $auth_user;
 		}
+		public static function getUser($user_id = null)
+		{
+			if ($user_id == null) {
+				$user_id = \Auth::user();
+			}
+
+			return User::find($user_id);
+		}
 		public static function completName($user = null)
 		{
 			if ($user == null) {
 				$user = \Auth::user();
-			}	
+			}
 
 			$completName = $user->first_name .' '. $user->last_name;
 			return $completName;
@@ -55,29 +63,31 @@
 	        return $data;
 		}
 
-		public static function UsersDevelopers()
-		{
+		public static function UsersDevelopers() {
 			$group = Group::where('tag', 'developer')->first();
 			$users = $group->User;
 			
 			return $users;
 		}
-		public static function UsersAdministrator()
-		{
+		public static function UsersAdministrator() {
 			$group = Group::where('tag', 'administrator')->first();
 			$users = $group->User;
 			
 			return $users;
 		}
-		public static function UsersCollaborator()
-		{
+		public static function UsersCollaborator() {
 			$group = Group::where('tag', 'collaborator')->first();
 			$users = $group->User;
 			
 			return $users;
-		}		
-		public static function UsersRecipient()
-		{
+		}
+		public static function UsersCollaborator2() {
+			$group = Group::where('tag', 'collaborator-2')->first();
+			$users = $group->User;
+			
+			return $users;
+		}
+		public static function UsersRecipient() {
 			$group = Group::where('tag', 'recipient')->first();
 			$users = $group->User;
 			
@@ -128,6 +138,34 @@
 			}
 			return false;
 		}
+		public static function IsUserCollaborator2($user = null)
+		{
+			if ($user == null)
+			{
+				$user = \Auth::user();
+			}
+
+			$group = $user->Group;
+			if ($group->tag == 'collaborator-2')
+			{
+				return true;
+			}
+			return false;
+		}
+		public static function IsUserEditor($user = null)
+		{
+			if ($user == null)
+			{
+				$user = \Auth::user();
+			}
+
+			$group = $user->Group;
+			if ($group->tag == 'editor')
+			{
+				return true;
+			}
+			return false;
+		}
 		public static function IsUserRecipient($user = null)
 		{
 			if ($user == null) {
@@ -151,13 +189,11 @@
 			return $result;
 		}
 
-		public static function getPreviousRoute()
-		{
+		public static function getPreviousRoute() {
 			return app('router')->getRoutes()->match(app('request')->create(url()->previous()))->getName();
 		}
 
-		public static function getStorageUrl()
-		{
+		public static function getStorageUrl() {
 			$bar = DIRECTORY_SEPARATOR;
 			$host_name = request()->getHttpHost();
 			$storage_url = '';
@@ -179,8 +215,7 @@
 			return $percentage;
 		}
 
-		public static function getUrlToSaveStorageMpdf()
-		{
+		public static function getUrlToSaveStorageMpdf() {
 			$host_name = URL::to('/');
 			$bar = DIRECTORY_SEPARATOR;
 
@@ -222,4 +257,11 @@
 				return 'assets/icons/6.png';
 			}
 		}
+
+		public static function checkDefinitivePassword() {
+			if (\Auth::user()->definitive_password == null) {
+                return true;
+            }
+		}
 	}
+	

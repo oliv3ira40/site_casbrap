@@ -21,9 +21,9 @@ use App\Models\Admin\User;
 
 class LoginController extends Controller
 {
-    function pageLogin(Request $req)
-    {
+    function pageLogin(Request $req) {
         $data = $req->all();
+        // 02757703110
 
         if (\Auth::user()) {
             return redirect()->route('site.index');
@@ -91,56 +91,56 @@ class LoginController extends Controller
 
     function resetPassword()
     {
-        // return view('Site.auth.reset.reset');
+        return view('Site.auth.reset.reset');
     }
     function validatePersonalData(reqValidatePersonalData $req) {
-        // $data = $req->all();
-        // $data['date_of_birth'] = str_replace('/', '-', $data['date_of_birth']);;
-        // $data['date_of_birth'] = date_create($data['date_of_birth'])->format('Y-m-d');
-        // $data['cpf'] = str_replace(['-', '.'], '', $data['cpf']);
-        // $data['registration'] = str_replace(['-', '.'], '', $data['registration']);
+        $data = $req->all();
+        $data['date_of_birth'] = str_replace('/', '-', $data['date_of_birth']);;
+        $data['date_of_birth'] = date_create($data['date_of_birth'])->format('Y-m-d');
+        $data['cpf'] = str_replace(['-', '.'], '', $data['cpf']);
+        $data['registration'] = str_replace(['-', '.'], '', $data['registration']);
 
-        // if (!HelpSite::verifyRecaptcha($data['g-recaptcha-response'])) {
-        //     return redirect()->route('site.recaptcha');
-        // }
+        if (!HelpSite::verifyRecaptcha($data['g-recaptcha-response'])) {
+            return redirect()->route('site.recaptcha');
+        }
 
-        // $user = User::where('cpf', $data['cpf'])
-        //     ->where('registration', $data['registration'])
-        //     ->orWhere('registration_for_login', $data['registration'])
-        //     ->where('date_of_birth', $data['date_of_birth'])->first();
+        $user = User::where('cpf', $data['cpf'])
+            ->where('registration', $data['registration'])
+            ->orWhere('registration_for_login', $data['registration'])
+            ->where('date_of_birth', $data['date_of_birth'])->first();
 
-        // if ($user) {
-        //     if (!$user->remember_token) {
-        //         $data['remember_token'] = Str::random(60);
-        //         $user->update($data);
-        //     }
+        if ($user) {
+            if (!$user->remember_token) {
+                $data['remember_token'] = Str::random(60);
+                $user->update($data);
+            }
         
-        //     return redirect()->route('site.new_password', $user->remember_token);
-        // } else {
-        //     session()->flash('info', 'Usuário não encontrado');
-        //     return redirect()->route('site.reset_password');
-        // }
+            return redirect()->route('site.new_password', $user->remember_token);
+        } else {
+            session()->flash('info', 'Usuário não encontrado');
+            return redirect()->route('site.reset_password');
+        }
     }
     function newPassword($remember_token) {
-        // $user = User::where('remember_token', $remember_token)->first();
+        $user = User::where('remember_token', $remember_token)->first();
 
-        // return view('Site.auth.reset.new_password', compact('user'));
+        return view('Site.auth.reset.new_password', compact('user'));
     }
     function saveNewPassword(reqSaveNewPassword $req) {
-        // $data = $req->all();
+        $data = $req->all();
 
-        // $user = User::where('remember_token', $data['remember_token'])->first();
-        // $data['password'] = bcrypt($data['password']);
-        // $data['definitive_password'] = date(now());
+        $user = User::where('remember_token', $data['remember_token'])->first();
+        $data['password'] = bcrypt($data['password']);
+        $data['definitive_password'] = date(now());
 
-        // $user->update($data);
+        $user->update($data);
 
-        // Auth::attempt(['cpf' => $user->cpf, 'password' => $data['password_confirmation']]);
-        // if (HelpAdmin::IsUserRecipient()) {
-        //     return redirect()->route('site.recipient');
-        // } else {
-        //     return redirect()->route('site.index');
-        // }
+        Auth::attempt(['cpf' => $user->cpf, 'password' => $data['password_confirmation']]);
+        if (HelpAdmin::IsUserRecipient()) {
+            return redirect()->route('site.recipient');
+        } else {
+            return redirect()->route('site.index');
+        }
     }
 
     function definitivePassword() {

@@ -5,6 +5,7 @@
     
     use App\Helpers\HelpAdmin;
     use Illuminate\Support\Facades\Storage;
+    use Illuminate\Support\Facades\Hash;
 
     use App\Models\Admin\User;
     use App\Models\Site\Wallet\CasembrapaWallet;
@@ -17,6 +18,7 @@
         public static function generatePdfCasembrapaWallet($registration, $casembrapa_wallet) {
             $bar = DIRECTORY_SEPARATOR;
             $registration = str_replace(['-', '.'], '', $registration);
+            $file_name = $casembrapa_wallet->file_name;
             
             $casembrapa_wallet_svg = Storage::get('wallets/svg_to_pdf/model_casembrapa.svg');
                 $casembrapa_wallet_svg = str_replace('recipient', $casembrapa_wallet->recipient, $casembrapa_wallet_svg);
@@ -61,16 +63,17 @@
             $mpdf->SetDisplayMode('fullpage');
             $mpdf->list_indent_first_level = 0;
 
-            $mpdf->WriteHTML($html);            
-            $mpdf->Output(HelpAdmin::getUrlToSaveStorageMpdf().'/wallets/wallets_pdf/casembrapa/'.'casembrapa_'.$registration.'.pdf', 'F');
+            $mpdf->WriteHTML($html);
+            $mpdf->Output(HelpAdmin::getUrlToSaveStorageMpdf().'/wallets/wallets_pdf/casembrapa/'.$file_name.'.pdf', 'F');
             // $mpdf->Output();
             // exit();
             // dd('---');
         }
         
-        public static function generatePdfCassiWallet($registration, $cassi_wallet) {
+        public static function generatePdfCassiWallet($registration, $cassi_wallet, $folder = 'cassi') {
             $bar = DIRECTORY_SEPARATOR;
             $registration = str_replace(['-', '.'], '', $registration);
+            $file_name = $cassi_wallet->file_name;
             
             $cassi_wallet_svg = Storage::get('wallets/svg_to_pdf/model_cassi.svg');
                 $cassi_wallet_svg = str_replace('name', $cassi_wallet->name, $cassi_wallet_svg);
@@ -114,47 +117,45 @@
             $mpdf->list_indent_first_level = 0;
 
             $mpdf->WriteHTML($html);            
-            $mpdf->Output(HelpAdmin::getUrlToSaveStorageMpdf().'/wallets/wallets_pdf/cassi/'.'cassi_'.$registration.'.pdf', 'F');
+            $mpdf->Output(HelpAdmin::getUrlToSaveStorageMpdf().'/wallets/wallets_pdf/'.$folder.'/'.$file_name.'.pdf', 'F');
             // $mpdf->Output();
             // exit();
             // dd('---');
         }
 
-        public static function getWalletPdfCasembrapa($registration) {
-            $registration = str_replace(['-', '.'], '', $registration);
-            $file_path = 'wallets/wallets_pdf/casembrapa/casembrapa_';
+        public static function getWalletPdfCasembrapa($file_name) {
+            $file_path = 'wallets/wallets_pdf/casembrapa/';
 
-            if (Storage::exists($file_path.$registration.'.pdf')) {
-                return HelpAdmin::getStorageUrl().$file_path.$registration.'.pdf';
+            if (Storage::exists($file_path.$file_name.'.pdf')) {
+                return HelpAdmin::getStorageUrl().$file_path.$file_name.'.pdf';
             } else {
                 return false;
             }
         }
-        public static function getWalletPdfCassi($registration) {
-            $registration = str_replace(['-', '.'], '', $registration);
-            $file_path = 'wallets/wallets_pdf/cassi/cassi_';
+        public static function getWalletPdfCassi($file_name) {
+            $file_path = 'wallets/wallets_pdf/cassi/';
 
-            if (Storage::exists($file_path.$registration.'.pdf')) {
-                return HelpAdmin::getStorageUrl().$file_path.$registration.'.pdf';
+            if (Storage::exists($file_path.$file_name.'.pdf')) {
+                return HelpAdmin::getStorageUrl().$file_path.$file_name.'.pdf';
             } else {
                 return false;
             }
         }
 
-        public static function getWalletImgCasembrapa($registration) {
-            $file_path = 'wallets/wallets_jpeg/casembrapa/casembrapa_';
+        public static function getWalletImgCasembrapa($file_name) {
+            $file_path = 'wallets/wallets_jpeg/casembrapa/';
 
-            if (Storage::exists($file_path.$registration.'.jpeg')) {
-                return HelpAdmin::getStorageUrl().$file_path.$registration.'.jpeg';
+            if (Storage::exists($file_path.$file_name.'.jpeg')) {
+                return HelpAdmin::getStorageUrl().$file_path.$file_name.'.jpeg';
             } else {
                 return false;
             }
         }
-        public static function getWalletImgCassi($registration) {
-            $file_path = 'wallets/wallets_jpeg/cassi/cassi_';
+        public static function getWalletImgCassi($file_name) {
+            $file_path = 'wallets/wallets_jpeg/cassi/';
 
-            if (Storage::exists($file_path.$registration.'.jpeg')) {
-                return HelpAdmin::getStorageUrl().$file_path.$registration.'.jpeg';
+            if (Storage::exists($file_path.$file_name.'.jpeg')) {
+                return HelpAdmin::getStorageUrl().$file_path.$file_name.'.jpeg';
             } else {
                 return false;
             }
@@ -173,7 +174,7 @@
                 ->pluck('registration')->toArray();
             $registrations = array_merge([$registration], $dependents);
             
-            // dd('---');
+            // dd('gerar carteira', str_random(20), Hash::make(str_random(8)));
             
             foreach ($registrations as $registration) {
                 $data['casembrapa_wallet'] = CasembrapaWallet::where('registration', $registration)->first();
@@ -181,14 +182,10 @@
     
                 if ($data['casembrapa_wallet']) {
                     HelpWallet::generatePdfCasembrapaWallet($data['casembrapa_wallet']->registration, $data['casembrapa_wallet']);
-                    // if (!Storage::exists('wallets/wallets_pdf/casembrapa/casembrapa_'.$data['casembrapa_wallet']->registration.'.pdf')) {
-                    // }
                 }
     
                 if ($data['cassi_wallet']) {
                     HelpWallet::generatePdfCassiWallet($data['cassi_wallet']->functional_enrollment, $data['cassi_wallet']);
-                    // if (!Storage::exists('wallets/wallets_pdf/cassi/cassi_'.$data['cassi_wallet']->functional_enrollment.'.pdf')) {
-                    // }
                 }
             }
 

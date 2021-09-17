@@ -87,29 +87,28 @@ class WalletController extends Controller
         return view('Site.wallet.digital_wallet', compact('data'));
     }
 
-    public function saveCasembrapaWallet(Request $req)
-    {
+    public function saveCasembrapaWallet(Request $req) {
         $data = $req->all();
         $casembrapa_wallet = CasembrapaWallet::find($data['id_casembrapa_wallet']);
+        $file_name = $casembrapa_wallet->file_name;
 
         $img = substr($data['img'], strpos($data['img'], ',') + 1);
         $img = base64_decode($img);
         
-        $file_path = 'wallets/wallets_jpeg/casembrapa/casembrapa_'.$casembrapa_wallet->registration.'.jpeg';
+        $file_path = 'wallets/wallets_jpeg/casembrapa/'.$file_name.'.jpeg';
         Storage::disk('public')->put($file_path, $img);
 
         return $file_path;
     }
-    public function saveCassiWallet(Request $req)
-    {
+    public function saveCassiWallet(Request $req) {
         $data = $req->all();
-
         $cassi_wallet = CassiWallet::find($data['id_cassi_wallet']);
+        $file_name = $cassi_wallet->file_name;
 
         $img = substr($data['img'], strpos($data['img'], ',') + 1);
         $img = base64_decode($img);
         
-        $file_path = 'wallets/wallets_jpeg/cassi/cassi_'.$cassi_wallet->functional_enrollment.'.jpeg';
+        $file_path = 'wallets/wallets_jpeg/cassi/'.$file_name.'.jpeg';
         Storage::disk('public')->put($file_path, $img);
 
         return $file_path;

@@ -1,0 +1,36 @@
+version: '3'
+
+services:
+  # Database
+  mariadb:
+    image: mariadb:latest
+    container_name: mariadb_local
+    volumes:
+      - db_data_local:/var/lib/mysql
+    restart: always
+    env_file: .env
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+
+  # phpmyadmin
+  phpmyadmin:
+    depends_on:
+      - mariadb
+    image: phpmyadmin/phpmyadmin
+    container_name: phpmyadmin_local
+    restart: always
+    ports:
+      - '9011:80'
+    env_file: .env
+    environment:
+      PMA_HOST: ${PHPMYADMIN_HOST}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_PASSWORD}
+
+  # php
+  
+
+volumes:
+  db_data_local:

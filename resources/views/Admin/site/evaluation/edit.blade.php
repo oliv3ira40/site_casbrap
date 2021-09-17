@@ -28,7 +28,7 @@
                                         {{ $errors->first(('evaluation.description')) }}
                                     </small>
                                 @endif
-                                {!! Form::textarea('evaluation[description]', $data['evaluation']->description, ['id'=>'description', 'class'=>'form-control', 'rows'=>'3']) !!}
+                                {!! Form::textarea('evaluation[description]', $data['evaluation']->description, ['id'=>'description', 'class'=>'form-control', 'rows'=>'6']) !!}
                             </div>
                         </div>
 
@@ -41,42 +41,6 @@
                                 </div>
                             </div>
     
-                            {{-- <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="allow_specific_groups_of_users">Direcionar a grupos de usuários específicos</label>
-                                        @if ($errors->has('evaluation_settings.allow_specific_groups_of_users'))
-                                            <small class="text-danger font-bold">
-                                                {{ $errors->first(('evaluation_settings.allow_specific_groups_of_users')) }}
-                                            </small>
-                                        @endif
-                                        <div class="check-box-position">
-                                            {!! Form::checkbox('evaluation_settings[allow_specific_groups_of_users]', 1, $data['evaluation_settings']->allow_specific_groups_of_users, [
-                                                'data-plugin'=>"switchery",
-                                                'data-color'=>"#188ae2",
-                                                'data-size'=>"small"])
-                                            !!}
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="send_notification_for_each_assessment">Notificar a cada pesquisa completa</label>
-                                        @if ($errors->has('evaluation_settings.send_notification_for_each_assessment'))
-                                            <small class="text-danger font-bold">
-                                                {{ $errors->first(('evaluation_settings.send_notification_for_each_assessment')) }}
-                                            </small>
-                                        @endif
-                                        <div class="check-box-position">
-                                            {!! Form::checkbox('evaluation_settings[send_notification_for_each_assessment]', 1, $data['evaluation_settings']->send_notification_for_each_assessment, [
-                                                'data-plugin'=>"switchery",
-                                                'data-color'=>"#188ae2",
-                                                'data-size'=>"small"])
-                                            !!}
-                                        </div>
-                                    </div>
-                                </div>
-                            </div> --}}
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
@@ -109,6 +73,56 @@
                                                 'data-color'=>"#188ae2",
                                                 'data-size'=>"small"])
                                             !!}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label for="allow_specific_groups_of_users">Direcionar a grupos específicos</label>
+                                        @if ($errors->has('evaluation_settings.allow_specific_groups_of_users'))
+                                            <small class="text-danger font-bold">
+                                                {{ $errors->first(('evaluation_settings.allow_specific_groups_of_users')) }}
+                                            </small>
+                                        @endif
+                                        <div class="check-box-position">
+                                            {{-- <select class="select2 select2-multiple" multiple="multiple" multiple data-placeholder="Choose ...">
+                                                <option value="AK">Alaska</option>
+                                                <option value="HI">Hawaii</option>
+                                            </select> --}}
+                                            {!! Form::select('asdasda',
+                                                [
+                                                    '0'=>0,
+                                                    '1'=>1,
+                                                ],
+                                                null,
+                                                [
+                                                    'class'=>'select2 select2-multiple',
+                                                    'multiple'=>'multiple',
+                                                    'multiple',
+                                                    'data-placeholder'=>' Choose ...',
+                                                ]
+                                            ) !!}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label for="allow_specific_groups_of_users">Início e termino da pesquisa</label>
+                                        @if ($errors->has('evaluation_settings.allow_specific_groups_of_users'))
+                                            <small class="text-danger font-bold">
+                                                {{ $errors->first(('evaluation_settings.allow_specific_groups_of_users')) }}
+                                            </small>
+                                        @endif
+                                        <div class="check-box-position">
+                                            {!! Form::text('evaluation_settings[aaaaaa]', $data['evaluation_settings']->aaaaaa, [
+                                                'class'=>"form-control input-daterange-timepicker"
+                                            ]) !!}
                                         </div>
                                     </div>
                                 </div>

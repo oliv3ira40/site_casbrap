@@ -39,8 +39,8 @@
                                             </h3>
                                             
                                             Baixar carteirinha digital:
-                                            @if (HelpWallet::getWalletPdfCasembrapa($data['casembrapa_wallet']->registration))
-                                                <a href="{{ HelpWallet::getWalletPdfCasembrapa($data['casembrapa_wallet']->registration) }}" target="_blank" download="carteira_casembrapa">
+                                            @if (HelpWallet::getWalletPdfCasembrapa($data['casembrapa_wallet']->file_name))
+                                                <a href="{{ HelpWallet::getWalletPdfCasembrapa($data['casembrapa_wallet']->file_name) }}" target="_blank" download="carteira_casembrapa">
                                                     <i style="font-size: 18px; position: unset;" class="icon-download"></i>
                                                     PDF
                                                 </a>
@@ -94,8 +94,8 @@
                                             </h3>
 
                                             Baixar carteirinha digital:
-                                            @if (HelpWallet::getWalletPdfCassi($data['cassi_wallet']->functional_enrollment))
-                                                <a href="{{ HelpWallet::getWalletPdfCassi($data['cassi_wallet']->functional_enrollment) }}" target="_blank" download="carteira_cassi">
+                                            @if (HelpWallet::getWalletPdfCassi($data['cassi_wallet']->file_name))
+                                                <a href="{{ HelpWallet::getWalletPdfCassi($data['cassi_wallet']->file_name) }}" target="_blank" download="carteira_cassi">
                                                     <i style="font-size: 18px; position: unset;" class="icon-download"></i>
                                                     PDF
                                                 </a>

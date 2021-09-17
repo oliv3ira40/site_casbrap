@@ -65,7 +65,7 @@
                                         @endif    
                                     @else
                                         @if (in_array('adm.users.edit', HelpAdmin::permissionsUser()))
-                                            <a href="{{ route('adm.users.edit', $user->id) }}" class="my-btn btn btn-xs btn-trans btn-warning">Editar</a>    
+                                            <a href="{{ route('adm.users.edit', $user->id) }}" class="my-btn btn btn-xs btn-trans btn-warning">Editar</a>
                                         @endif
 
                                         @if (in_array('adm.users.alert', HelpAdmin::permissionsUser()))

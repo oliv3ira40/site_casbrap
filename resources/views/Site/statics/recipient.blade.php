@@ -35,6 +35,23 @@
 				</h3>
 				<br>
 			</center>
+
+			@if (\Session::has('info'))
+				@php
+					$info = explode(":", \Session::get('info'));
+				@endphp
+
+				<div class="row m-b-10">
+					<div class="col-md-12">
+						<div class="alert alert-{{ $info[0] }} alert-dismissible" role="alert">
+							{{ $info[1] }}
+							<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>
+					</div>
+				</div>
+			@endif
 			
 			<div class="row">
 				<div class="col-md-6">
@@ -104,22 +121,30 @@
 				<div class="col-md-6">
 					<div style="padding: 30px 15px 15px 30px; min-height: 104px;" class="strip_list wow fadeIn">
 						@if (\Auth::user() OR Session::has('temporary_user'))
-							@php $user = HelpSite::getUserOrCasembrapaUser() @endphp
-							@if (Storage::exists('site/boletos_bb/'.$user->registration.'.pdf') OR
-								Storage::exists('site/boletos_bb/'.str_replace('99-', '', $user->registration).'.pdf'))
+							@php 
+								$user = HelpSite::getUserOrCasembrapaUser();
+								$name_file = '00.pdf';
+								if (count(Storage::allFiles('site/boletos_bb/'))) {
+									$first_file = Storage::allFiles('site/boletos_bb/')[0];
+									$first_file = str_replace('site/boletos_bb/', '', $first_file);
+									
+									// $date = date('mY');
+									$date = substr($first_file, strpos($first_file, '_') + 1, 6);
+									$name_file = $user->cpf.'_'.$date.'_1.pdf';
+								}
+							@endphp
+	
+							@if (Storage::exists('site/boletos_bb/'.$name_file))
 								@php
-									$pdf_link = HelpAdmin::getStorageUrl().'site/boletos_bb/'.$user->registration.'.pdf';
-									if (!Storage::exists('site/boletos_bb/'.$user->registration.'.pdf')) {
-										$pdf_link = HelpAdmin::getStorageUrl().'site/boletos_bb/'.str_replace('99-', '', $user->registration).'.pdf';
-									}
+									$pdf_link = HelpAdmin::getStorageUrl().'site/boletos_bb/'.$name_file;
 								@endphp
-
+	
 								<a href="{{ asset($pdf_link) }}" download>
 									<h3>
 										<i class="fa fa-file-pdf-o p-r-10"></i>
 										Boleto do mês
 									</h3>
-
+	
 									<p>
 										Clique aqui para baixar o boleto
 									</p>
@@ -130,7 +155,7 @@
 										<i class="fa fa-file-pdf-o p-r-10"></i>
 										Boleto do mês
 									</h3>
-
+	
 									<p class="text-danger">
 										Boleto não disponível
 									</p>
@@ -142,9 +167,36 @@
 									<i class="fa fa-file-pdf-o p-r-10"></i>
 									Boleto do mês
 								</h3>
-
+	
 								<p>
 									Clique aqui para fazer seu login e ter acesso ao boleto
+								</p>
+							</a>
+						@endif
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div style="padding: 30px 15px 15px 30px; min-height: 104px;" class="strip_list wow fadeIn">
+						@if (\Auth::user())
+							<a href="{{ route("site.registration_update.view") }}">
+								<h3>
+									<i class="pe-7s-id p-r-10"></i>
+									ATUALIZAÇÃO CADASTRAL
+								</h3>
+
+								<p>
+									Para atualização Cadastral, clique aqui
+								</p>
+							</a>
+						@else
+							<a href="{{ route('site.page_login') }}">
+								<h3>
+									<i class="pe-7s-id p-r-10"></i>
+									ATUALIZAÇÃO CADASTRAL
+								</h3>
+	
+								<p>
+									Para atualização Cadastral, clique aqui
 								</p>
 							</a>
 						@endif

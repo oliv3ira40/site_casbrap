@@ -90,28 +90,6 @@
         </div>
     </div>
 
-    {{-- <div class="row">
-        <div class="col-md-12">
-            <div class="card-box">
-                <h4 class="header-title m-t-0 m-b-20">Resultado geral por pergunta</h4>
-
-                <div class="text-center">
-                    <ul class="list-inline chart-detail-list mb-0">
-                        @foreach ($data['responses_availables'] as $key => $response_available)
-                            <li class="list-inline-item">
-                                <h5 style="color: {{ $data['colors'][$key] }}; font-size: 13px;">
-                                    <i class="fa fa-circle m-r-5"></i>
-                                    {{ $response_available->answer_text }}
-                                </h5>
-                            </li>
-                        @endforeach
-                    </ul>
-                </div>
-                <div id="bar_all_questions" style="height: 300px;"></div>
-            </div>
-        </div>
-    </div> --}}
-
     <div class="row">
         @php $count = 1; @endphp
         @foreach ($data['available_questions'] as $available_question)
@@ -209,18 +187,10 @@
                         <div class="modal-body pt-0 pb-0">
                             <h5>Data de registro:</h5>
                             <input class="form-control date_range_01" id="date_range" type="text" name="date_range" value="" autocomplete="off"/>
-                            
-                            {{-- <h5>
-                                <b class="text-muted">Pesquisas selecionas: </b>
-                                <span id="count_evaluations">
-                                    {{ $data['evaluations']->count() }}
-                                </span>
-                            </h5> --}}
 
                             <h5>Formato de arquivo:</h5>
                             <select name="file_format" class="form-control select2">
                                 <option selected value="pdf" >PDF</option>
-                                {{-- <option value="excel" >Excel</option> --}}
                             </select>
                         </div>
                         <div class="modal-footer">

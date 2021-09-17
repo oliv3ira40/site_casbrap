@@ -62,11 +62,13 @@
 				
 				<div class="col-md-3">
 					{{-- Todos as noticias / artigos --}}
-					<a href="{{ route('site.posts.list') }}">
-						<strong>
-							Todos as notícias
-						</strong>
-					</a>
+					<h4>
+						<a href="{{ route('site.posts.list') }}">
+							<strong>
+								Todos as notícias
+							</strong>
+						</a>
+					</h4>
 					<hr class="m-b-10">
 					
 					{{-- Buscar --}}
@@ -99,9 +101,9 @@
 								<small>
 									{{ $post->created_at->format('d-m-Y') }}
 								</small>
-								<h3>
+								<h3 style="margin-top: 0px;">
 									<a href="{{ route('site.posts.detail', $post->id) }}" title="">
-										{{ str_limit($post->title, 45, '...') }}
+										{{ str_limit($post->title, 35, '...') }}
 									</a>
 								</h3>
 							</li>

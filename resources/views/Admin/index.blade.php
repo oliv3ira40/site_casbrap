@@ -377,5 +377,82 @@
             </div>
         </div>
     @endif
+    
+    @if (HelpAdmin::IsUserCollaborator2())
+        <div class="row">
+            <a href="{{ route('adm.file_1') }}" class="col-md-3">
+                <div class="card-box">
+                    <h4 class="header-title mt-0 m-b-10 text-success">Regulamento</h4>
+
+                    <div class="widget-box-2">
+                        <div class="widget-detail-2">
+                            <h2 class="mb-0 text-success">1</h2>
+                            <p class="text-muted m-b-20">Arquivo disponível</p>
+                        </div>
+                        <div class="progress progress-bar-success-alt progress-sm mb-0">
+                            <div class="progress-bar progress-bar-success" role="progressbar"
+                                aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"
+                                style="width: 100%;">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+            <a href="{{ route('adm.file_2') }}" class="col-md-3">
+                <div class="card-box">
+                    <h4 class="header-title mt-0 m-b-10 text-primary">Estatuto Social</h4>
+
+                    <div class="widget-box-2">
+                        <div class="widget-detail-2">
+                            <h2 class="mb-0 text-primary">1</h2>
+                            <p class="text-muted m-b-20">Arquivo disponível</p>
+                        </div>
+                        <div class="progress progress-bar-primary-alt progress-sm mb-0">
+                            <div class="progress-bar progress-bar-primary" role="progressbar"
+                                aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"
+                                style="width: 100%;">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+            <a href="{{ route('adm.file_3') }}" class="col-md-3">
+                <div class="card-box">
+                    <h4 class="header-title mt-0 m-b-10 text-warning">Quadro Pessoal</h4>
+
+                    <div class="widget-box-2">
+                        <div class="widget-detail-2">
+                            <h2 class="mb-0 text-warning">4</h2>
+                            <p class="text-muted m-b-20">Arquivos disponíveis</p>
+                        </div>
+                        <div class="progress progress-bar-warning-alt progress-sm mb-0">
+                            <div class="progress-bar progress-bar-warning" role="progressbar"
+                                aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"
+                                style="width: 100%;">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+            <a href="{{ route('adm.file_4') }}" class="col-md-3">
+                <div class="card-box">
+                    <h4 class="header-title mt-0 m-b-10 text-danger">Ramais</h4>
+
+                    <div class="widget-box-2">
+                        <div class="widget-detail-2">
+                            <h2 class="mb-0 text-danger">1</h2>
+                            <p class="text-muted m-b-20">Arquivo disponível</p>
+                        </div>
+                        <div class="progress progress-bar-danger-alt progress-sm mb-0">
+                            <div class="progress-bar progress-bar-danger" role="progressbar"
+                                aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"
+                                style="width: 100%;">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+    @endif
 
 @endsection

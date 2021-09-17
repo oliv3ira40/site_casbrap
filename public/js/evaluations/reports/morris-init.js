@@ -3,7 +3,7 @@ $(function() {
     var form_bar_by_question = $('#form-bar_by_question');
     var form_donut_by_question = $('#form-donut_by_question');
 
-    // console.log(form_donut_by_question);
+    console.log(form_bar_by_question);
 
     if (form_bar_by_question.length) {
         var _token = form_bar_by_question.find("input[name='_token']").val();
@@ -13,9 +13,11 @@ $(function() {
             evaluation_id: evaluation_id
         }, function (data, textStatus, jqXHR) {
         }).done(function(data) {
+            console.log(data);
             $.each(data['available_questions'], function(key, question) {
                 bar_morris = data['bar_morris']['question_'+question['id']];    
                 var bar_by_question = $('#bar_by_question_'+question['id']);
+                // console.log(evaluation_id);
                 // console.log(bar_morris);
 
                 $.each(bar_morris['data'], function (possible_answer_id, possible_answer) { 
@@ -109,7 +111,6 @@ $(function() {
                 },
         
                 MorrisCharts.prototype.init = function() {
-                    //creating donut chart
                     this.createDonutChart(
                         donut_by_question,
                         data['data'][question_id],

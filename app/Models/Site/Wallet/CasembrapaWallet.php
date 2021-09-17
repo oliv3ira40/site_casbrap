@@ -20,6 +20,7 @@ class CasembrapaWallet extends Model
         'stock_code',
         'situation',
         'email',
+        'file_name',
     ];
 
 

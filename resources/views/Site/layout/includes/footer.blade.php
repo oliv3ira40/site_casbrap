@@ -273,6 +273,7 @@
 
 	{{-- MY JAVASCRIPT --}}
 		<script type="text/javascript" src="{{ asset('js/utilities/masks.js') }}"></script>
+		<script type="text/javascript" src="{{ asset('js/utilities/via_cep.js') }}"></script>
 		<script type="text/javascript" src="{{ asset('js/wallet/digital_wallet.js') }}"></script>
 		<script type="text/javascript" src="{{ asset('js/site/search.js') }}"></script>
 

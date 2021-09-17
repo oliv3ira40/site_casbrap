@@ -49,10 +49,7 @@ class AdminController extends Controller
 
     public function index(Request $req) {
         // set_time_limit(999999999999999999);
-        // if (HelpAdmin::IsUserDeveloper()) {
-            // dd(\Request::ip());
-            // dd(HelpWallet::generatePdfWalletsForThisUser('90071000'));
-        // }
+        // ini_set('memory_limit', '-1');
 
         if (HelpAdmin::IsUserDeveloper()) {
             $data['user'] = \Auth::user();

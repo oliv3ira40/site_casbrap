@@ -33,12 +33,34 @@ $(function() {
         mask_date.mask('00/00/0000');
     }
     
+    var mask_datetime = $(".mask_datetime");
+    if (mask_datetime.length > 0)
+    {
+        mask_datetime.mask('00/00/0000 00:00');
+    }
+    
     var mask_cpf = $(".mask_cpf");
     if (mask_cpf.length > 0)
     {
         mask_cpf.mask('000.000.000-00');
     }
 
+    var mask_phone = $(".mask_phone");
+    if (mask_phone.length > 0)
+    {
+        mask_phone.mask('(00) 0000 0000');
+    }
+    var mask_commercial_phone = $(".mask_commercial_phone");
+    if (mask_commercial_phone.length > 0)
+    {
+        mask_commercial_phone.mask('(00) 0000 0000');
+    }
+    var mask_cell_phone = $(".mask_cell_phone");
+    if (mask_cell_phone.length > 0)
+    {
+        mask_cell_phone.mask('(00) 00000 0000');
+    }
+    
     var mask_cnpj = $(".mask_cnpj");
     if (mask_cnpj.length > 0)
     {

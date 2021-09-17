@@ -21,6 +21,7 @@ class CassiWallet extends Model
         'situation_card',
         'shelf_life',
         'lot',
+        'file_name',
     ];
 
 

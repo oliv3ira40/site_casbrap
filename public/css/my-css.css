@@ -1,5 +1,25 @@
 .html2canvas-container { width: 100% !important; height: 100% !important; }
 
+p {
+    font-size: 16px !important;
+}
+.singlepost h1 {
+    font-size: 2.2rem;
+}
+h3 {
+    font-size: 18px !important;
+}
+h4 {
+    font-size: 16px !important;
+}
+.hero_home .content h3 {
+    font-size: 3.75rem !important;
+}
+.hero_home .content p {
+    font-size: 1.3125rem !important;
+}
+
+
 .height-auto {
     height: auto !important;
 }
