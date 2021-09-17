@@ -21,7 +21,7 @@
                                 Ramais.pdf
                             </td>
                             <td>
-                                15/16/2021
+                                15/06/2021
                             </td>
                             <td>
                                 <a href="{{ asset('pages/admin/intranet/Ramais.pdf') }}" target="_blank" class="my-btn btn btn-xs btn-trans btn-primary">

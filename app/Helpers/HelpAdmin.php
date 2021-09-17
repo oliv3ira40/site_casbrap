@@ -258,6 +258,17 @@
 			}
 		}
 
+		public static function treatsRouteUrl($route) {
+			$route = str_replace(' ', '', $route);
+            $route_ex = explode(',', $route);
+            
+            if (count($route_ex) > 1) {
+                return route($route_ex[0], $route_ex[1]);
+            } else {
+                return route($route_ex[0]);
+            }
+		}
+
 		public static function checkDefinitivePassword() {
 			if (\Auth::user()->definitive_password == null) {
                 return true;

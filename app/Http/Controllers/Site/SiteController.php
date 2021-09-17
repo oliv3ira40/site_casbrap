@@ -95,7 +95,9 @@ class SiteController extends Controller
         return view('Site.statics.medical_guide');
     }
     public function coronavirus() {
-        $data['first_post'] = Post::whereIn('id', ['300', '255', '259', '239', '242'])->orderBy('created_at', 'desc')->get();
+        // '269','259','258','249','239','242'
+        $data['first_post'] = Post::whereIn('id', ['323','300', '255', '259', '239', '242'])->orderBy('created_at', 'desc')->get();
+        // '255', '250', '245', '244'
         $data['latest_posts'] = Post::whereIn('id', ['250', '245', '244'])->orderBy('created_at', 'desc')->get();
 
         return view('Site.statics.coronavirus', compact('data'));
@@ -109,6 +111,9 @@ class SiteController extends Controller
     public function extraordinaryGeneralMeeting() {
         return view('Site.statics.extraordinary_general_meeting');
     }
+     public function numberOfLifes() {
+        return view('Site.statics.number_of_lives');
+    }
     // STATICS
 
 
@@ -119,7 +124,8 @@ class SiteController extends Controller
 
 
     // MODELO CONTROLLER
-    // public function nomeDaFunção() {
+    // public function nomeDaFunção()
+    // {
     //     return view('caminho_da_pagina_criada_em_html');
     // }
     // STATICS

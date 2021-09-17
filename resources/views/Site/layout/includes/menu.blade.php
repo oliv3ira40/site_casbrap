@@ -19,9 +19,10 @@
             <div style="height: 35px" class="sub-menu sub-menu-custom">
                 <div class="container">
                     <ul class="ul-sub-menu-custom" style="display: inline-flex; margin-bottom: 0px; float: right;">
+                        
                         <li class="btn-sub-menu">
                             <a href="{{ route('site.recipient') }}">
-                                Área do Beneficiário
+                                Área do Beneficiário  |
                             </a>
                         </li>
                         <li class="btn-sub-menu">
@@ -87,7 +88,7 @@
                                 @foreach (HelpMenus::TopMenu() as $item)
                                     <li class="default_li li_menu_site">
                                         <span>
-                                            <a class="a-menu-site {{ $item['class'] }}" id="{{ $item['id'] }}" href="{{ ($item['url'] != '#') ? route($item['url']) : '#' }}">
+                                            <a class="a-menu-site {{ $item['class'] }}" id="{{ $item['id'] }}" href="{{ ($item['url'] != '#') ? HelpAdmin::treatsRouteUrl($item['url']) : '#' }}">
                                                 {{ $item['label'] }}
                                                 @if ($item['i'] != '#')
                                                     <i class="{{ $item['i'] }}"></i>
@@ -104,7 +105,7 @@
                                                                 {{ $sub_item['label'] }}
                                                             </a>
                                                         @else
-                                                            <a class="a-menu-site" target="{{ $sub_item['target'] }}" href="{{ ($sub_item['url'] != '#') ? route($sub_item['url']) : '#' }}">
+                                                            <a class="a-menu-site" target="{{ $sub_item['target'] }}" href="{{ ($sub_item['url'] != '#') ? HelpAdmin::treatsRouteUrl($sub_item['url']) : '#' }}">
                                                                 {{ $sub_item['label'] }}
                                                             </a>
                                                         @endif
@@ -129,5 +130,13 @@
                     </div>
                 </div>
             </div>
+
         </header>
+            <div class="bg_color_1 pt-0">
+                <div class="row">
+                    <div class="col-md-12 div_call_center">
+                        <img style="width: 100%" src="{{ asset('pages/home/central-de-atendimento.png') }}" alt="central-de-atendimento">
+                    </div>
+                </div>
+            </div>
         <!-- /header -->

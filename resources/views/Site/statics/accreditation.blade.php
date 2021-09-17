@@ -33,7 +33,8 @@
 								<li><a href="#atualizacao"><i class="icon-arrows-cw"></i>ATUALIZAÇÃO DE CADASTRO</a></li>
 								<li><a href="#calendario"><i class="icon-calendar"></i>CALENDÁRIO DE ENTREGA</a></li>
 								<li><a href="#central-de-atendimento"><i class="icon-chat-empty"></i>CENTRAL DE ATENDIMENTO</a></li>
-								<li><a href="{{ asset('pages/accreditation/PROCEDIMENTOS QUE EXIGEM AUTORIZACAO_PREVIA_29-12.pdf') }}" target="_blank"><i class="icon-thumbs-up-alt"></i>PROCEDIMENTOS QUE PRECISAM DE AUTORIZAÇÃO PRÉVIA</a></li>
+								<li><a href="{{ asset('pages/accreditation/PROCEDIMENTOS_QUE_EXIGEM_AUTORIZACAO_PREVIA.pdf') }}" target="_blank"><i class="icon-thumbs-up-alt"></i>PROCEDIMENTOS QUE PRECISAM DE AUTORIZAÇÃO PRÉVIA</a></li>
+								<li><a href="https://www.ans.gov.br/arquivos/assuntos/prestadores/padrao-para-troca-de-informacao-de-saude-suplementar-tiss/padrao-tiss/Padrao_TISS_Representacao_de_Conceitos_em%20Saude_202106.zip" target="_blank"><i class="icon-doc-inv"></i>PADRÃO TISS - VERSÃO VIGENTE</a></li>
 								<li>
 									<a href="{{ route('site.posts.list', ['tag_post_id'=>2]) }}" target="_blank">
 										<i class="icon-docs"></i>
@@ -56,25 +57,29 @@
 								</h3>
 								
 								<p align="justify">
-									A Casembrapa divulga o cronograma para envio de faturas 2021 aos prestadores credenciados à nossa rede. A entrega deve ocorrer sempre no período entre o 1º e o 3º dia útil de cada mês, impreterivelmente. O Calendário de Faturas de 2021 está disponível <a target="_blank" href="{{ asset('pages/accreditation/cronograma-de-entrega-de-faturas-ano-2021.pdf') }}">neste link</a>.	
-								</p>
-								<p align="justify" style="color: #0069a6">
-									Lembramos que, ultrapassada a data estipulada, a apresentação das faturas passará para o mês subsequente. Os pagamentos são creditados todo dia 10 do mês seguinte.
-								</p>
-								<p align="justify">
-									No intuito de oferecer o melhor atendimento possível aos nossos prestadores credenciados, seguem abaixo orientações para o envio das faturas e dos arquivos eletrônicos, conforme o Padrão para Troca de Informação de Saúde Suplementar (TISS) estabelecido pela Agência Nacional de Saúde Suplementar (ANS):
+									Confira abaixo o cronograma de entrega das faturas físicas e eletrônicas, para o ano de 2021:<br><br>
+									<img width="100%" align="center" src="https://www.casembrapa.com.br/public/pages/accreditation/cronograma-de-entrega-de-faturas-ano-2021.png">
+
 								</p>
 								<p align="justify">
-									•	O faturamento deverá ser realizado eletronicamente, pelo portal Star TISS, com acesso pelo Espaço de Conectividade no site da <a href="{{ route('site.accreditation') }}">Casembrapa</a>;<br>
-									•	O arquivo eletrônico (XML) deve ser postado no Portal no período determinado no cronograma de entrega de faturas;<br>
-									•	Todas as guias devem estar preenchidas, carimbadas e assinadas conforme padrão TISS;<br>
-									•	Pedidos médicos devem ser anexados às guias (salvo nos casos onde o pedido for solicitado na própria guia);<br>
-									•	As faturas devem vir na seguinte ordem: 1º Nota fiscal, 2º protocolos de XML e 3º guias TISS.<br>
-									•	O prestador deverá confeccionar fatura com protocolo de XML e nota fiscal separada, para guias de Consultas e Exames Periódicos (PCMSO);
+									<strong>A entrega deve ocorrer sempre no período entre o 1º e o 3º dia útil de cada mês, impreterivelmente.</strong> Lembramos que, ultrapassada a data estipulada, a apresentação das faturas passará para o mês subsequente. Os pagamentos são creditados todo dia 10 do mês seguinte.
 								</p>
-								<p align="justify" style="color: #0069a6">
-									Ressaltamos que após o recebimento das faturas, realizaremos uma triagem da documentação recebida. Caso sejam identificados erros nos arquivos eletrônicos ou documentação encaminhada, é política da Casembrapa a devolução das faturas para correção e posterior reapresentação.
+								<h3>
+									PRESTADOR DO DF
+								</h3>
+								<p align="justify">
+									
+									Confira abaixo o cronograma de recebimento de faturas:<br><br>
+									<img width="100%" align="center" src="https://www.casembrapa.com.br/public/pages/accreditation/cronograma-de-entrega-de-faturas-ano-2021_DF.png">
+
 								</p>
+								<p align="justify">
+								<strong>Informamos que não serão aceitas faturas recebidas fora do prazo.</strong><br>
+
+								Acesse <a href="https://casembrapa.com.br/public/pages/accreditation/cronograma-de-entrega-de-faturas-ano-2021.pdf">aqui </a> o calendário completo.
+
+								</p>
+								
 								<p align="justify">
 									Agradecemos pelos serviços dispensados ao nosso plano e colocamo-nos à disposição para mais esclarecimentos. Entre em contato conosco por e-mail: <a href="mailto:contasmedicas@casembrapa.org.br">contasmedicas@casembrapa.org.br</a> ou <a href="mailto:credenciamento@casembrapa.org.br">credenciamento@casembrapa.org.br</a>. A comunicação também pode ser feita pelos telefones (61) 3181-0010, opção 2 (para quem é do Distrito Federal) e 0800-940-5560, opção 2 (para quem está fora do DF).
 								</p>

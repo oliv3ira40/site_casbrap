@@ -29,7 +29,7 @@
                                 E-mail.pdf
                             </td>
                             <td>
-                                15/16/2021
+                                15/06/2021
                             </td>
                             <td>
                                 <a href="{{ asset('pages/admin/intranet/Quadro Pessoal/E-mail.pdf') }}" target="_blank" class="my-btn btn btn-xs btn-trans btn-primary">
@@ -42,7 +42,7 @@
                                 QTD SETOR.pdf
                             </td>
                             <td>
-                                15/16/2021
+                                15/06/2021
                             </td>
                             <td>
                                 <a href="{{ asset('pages/admin/intranet/Quadro Pessoal/QTD SETOR.pdf') }}" target="_blank" class="my-btn btn btn-xs btn-trans btn-primary">
@@ -55,7 +55,7 @@
                                 Quadro Pessoal.pdf
                             </td>
                             <td>
-                                15/16/2021
+                                15/06/2021
                             </td>
                             <td>
                                 <a href="{{ asset('pages/admin/intranet/Quadro Pessoal/Quadro Pessoal.pdf') }}" target="_blank" class="my-btn btn btn-xs btn-trans btn-primary">
@@ -68,7 +68,7 @@
                                 Supervisor.pdf
                             </td>
                             <td>
-                                15/16/2021
+                                15/06/2021
                             </td>
                             <td>
                                 <a href="{{ asset('pages/admin/intranet/Quadro Pessoal/Supervisor.pdf') }}" target="_blank" class="my-btn btn btn-xs btn-trans btn-primary">
