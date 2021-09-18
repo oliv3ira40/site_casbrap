@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Site\Evaluation;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Helpers\HelpAdmin;
+use App\Helpers\HelpEvaluation;
 use Session;
 
 use App\Http\Requests\Site\Evaluation\CompletedEvaluation\ReqSave;
@@ -27,8 +28,33 @@ use App\Models\Site\Evaluation\ResponsibleForTheEvaluation;
 class CompletedEvaluationController extends Controller {
     function new($evaluation_id) {
         $data['evaluation'] = Evaluation::find($evaluation_id);
-        $data['images_for_evaluation'] = $data['evaluation']->ImagesForEvaluation->sortBy('position');
         $data['evaluation_settings'] = $data['evaluation']->EvaluationSettings;
+        $data['alloweds_groups'] = $data['evaluation_settings']->AllowedsGroups;
+        
+        $check_evaluation_validity = HelpEvaluation::checkEvaluationValidity($data['evaluation_settings']);
+        if (!$check_evaluation_validity) {
+            return view('Site.evaluation.completed_evaluation.finished', compact('data'));
+        }
+
+        $check_login_required = HelpEvaluation::checkLoginRequired($data['evaluation_settings']['login_required']);
+        if ($data['evaluation_settings']['login_required']) {
+            if (!$check_login_required) {
+                return redirect()->route('site.page_login');
+            }
+
+            $check_alloweds_groups = HelpEvaluation::checkAllowedsGroups($data['alloweds_groups']);
+            if (!$check_alloweds_groups AND !HelpAdmin::IsUserDeveloper()) {
+                return redirect()->route('site.completed_evaluations.not_authorized');
+            }
+            
+            $check_single_response_user = HelpEvaluation::checkSingleResponsePerUser($data['evaluation']->id, $data['evaluation_settings']['answered_only_once_per_user']);
+            if (!$check_single_response_user AND !HelpAdmin::IsUserDeveloper()) {
+                return redirect()->route('site.completed_evaluations.already_answered');
+            }
+        }
+
+
+        $data['images_for_evaluation'] = $data['evaluation']->ImagesForEvaluation->sortBy('position');
         $data['question_topics'] = $data['evaluation']->QuestionTopics->sortBy('position');
         $data['all_questions'] = $data['evaluation']->AvailableQuestions->sortBy('position');
         $data['no_topic_question'] = $data['all_questions']->where('question_topic_id', null);
@@ -36,44 +62,7 @@ class CompletedEvaluationController extends Controller {
         $data['quest_w_conf_t_required_reading'] = $data['all_questions']
             ->where('confirmation_text', '!=', null)
             ->where('reading_the_mandatory_confirmation_text', 1);
-        
-        if ($data['evaluation_settings']->login_required) {
-            if (\Auth::user()) {
-                
-                $data['auth_user'] = \Auth::user();
-            } elseif (Session::has('temporary_user')) {
-                
-                $id = \Session::get('temporary_user');
-                $data['auth_user'] = User::where('cpf', CasembrapaWallet::find($id)->cpf)->first();
-            } else {
-                return redirect()->route('site.user.validate_cpf', ['target'=>'new_evaluation', 'evaluation_id'=>$data['evaluation']->id]);
-            };
-        }
 
-        if ($data['evaluation']->id == 2) {
-            return view('Site.evaluation.completed_evaluation.finished', compact('data'));
-        } elseif ($data['evaluation']->id == 1) {
-            if (!HelpAdmin::IsUserDeveloper()) {
-                if ($data['auth_user'] != null AND HelpAdmin::IsUserRecipient($data['auth_user']) AND $data['auth_user']->compliant) {
-                } else {
-                    session()->flash('reason', 'Esta votação é esclusiva para os beneficiários titulares e adimplentes.');
-                    return redirect()->route('site.completed_evaluations.not_authorized');
-                }
-            }
-        }
-        
-        // dd(!HelpAdmin::IsUserDeveloper() AND !HelpAdmin::IsUserCollaborator() AND !HelpAdmin::IsUserAdministrator());
-        if ($data['evaluation_settings']->answered_only_once_per_user AND $data['evaluation_settings']->login_required) {
-            if (!HelpAdmin::IsUserDeveloper()) {
-                $completed_evaluations = $data['evaluation']->CompletedEvaluations->where('user_id', $data['auth_user']->id)->count();
-                
-                if ($completed_evaluations != 0) {
-                    return redirect()->route('site.completed_evaluations.already_answered');
-                }
-            }
-        }
-
-        // dd($data['no_topic_question']);
         return view('Site.evaluation.completed_evaluation.new', compact('data'));
     }
     function save(ReqSave $req) {

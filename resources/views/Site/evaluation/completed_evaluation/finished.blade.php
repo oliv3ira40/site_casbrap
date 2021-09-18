@@ -3,7 +3,7 @@
     @if (HelpApplicationSetting::getAppName())
         {{ HelpApplicationSetting::getAppName()->app_name }}
     @endif
-    - Pesquisa encerrada
+    - Pesquisa não disponível
 @stop
 
 @section('content')
@@ -19,7 +19,7 @@
                         {{-- <h3>{{ $data['evaluation']->name }}</h3> --}}
                         <div class="text-center">
                             <h5>
-                                Pesquisa encerrada
+                                Pesquisa não disponível
                             </h5>
                         </div>
 					</div>

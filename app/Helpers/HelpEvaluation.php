@@ -4,7 +4,7 @@
 
     use App\Models\Admin\User;
     use App\Helpers\HelpAdmin;
-
+    use App\Models\Site\Evaluation\CompletedEvaluation;
     use Carbon\Carbon;
 
 	/**
@@ -12,8 +12,7 @@
 	*/
 	class HelpEvaluation
 	{
-		public static function getDataForReporting($evaluation)
-		{
+		public static function getDataForReporting($evaluation) {
             $data['evaluation'] = $evaluation;
             $data['colors'] = [
                 '#00FFFF',
@@ -57,8 +56,7 @@
             return $data;
         }
         
-        public static function getDataForDownloadingReport($evaluation, $date_range)
-		{
+        public static function getDataForDownloadingReport($evaluation, $date_range) {
             $data['evaluation'] = $evaluation;
             $data['question_topics'] = $evaluation->QuestionTopics;
 
@@ -128,16 +126,14 @@
             return $data;
         }
         
-        public static function GenerateReport($file_format, $data)
-        {
+        public static function GenerateReport($file_format, $data) {
             if ($file_format == 'pdf') {
                 HelpEvaluation::PdfReport($data);
             } else {
                 HelpEvaluation::ExcelReport($file_format, $data);
             }
         }
-        public static function PdfReport($data)
-        {
+        public static function PdfReport($data) {
             set_time_limit(1000000);
             $bar = DIRECTORY_SEPARATOR;
             $img_header = public_path().$bar.'assets/letterhead_header.png';
@@ -255,15 +251,17 @@
 
                 $completed_evaluations = '';
                 foreach ($data['completed_evaluations'] as $key => $completed_evaluation) {
-                    $completed_evaluations .= '
-                        <tr>
-                            <td class="td-border">'.HelpAdmin::completName($completed_evaluation->User).'</td>
-                            <td class="td-border">'.$completed_evaluation->User->cpf.'</td>
-                            <td class="td-border">'.$completed_evaluation->User->registration.'</td>
-                            <td class="td-border">'.$completed_evaluation->ip_adress.'</td>
-                            <td class="td-border">'.$completed_evaluation->created_at->format('d/m/Y H:i').'</td>
-                        </tr>
-                    ';
+                    if ($completed_evaluation->User) {
+                        $completed_evaluations .= '
+                            <tr>
+                                <td class="td-border">'.HelpAdmin::completName($completed_evaluation->User).'</td>
+                                <td class="td-border">'.$completed_evaluation->User->cpf.'</td>
+                                <td class="td-border">'.$completed_evaluation->User->registration.'</td>
+                                <td class="td-border">'.$completed_evaluation->ip_adress.'</td>
+                                <td class="td-border">'.$completed_evaluation->created_at->format('d/m/Y H:i').'</td>
+                            </tr>
+                        ';
+                    }
                 }
 
                 $reports_data['html'] = '
@@ -417,8 +415,7 @@
             // $mpdf->Output();
             // exit();
         }
-        public static function ExcelReport($file_format, $data)
-        {
+        public static function ExcelReport($file_format, $data) {
             // dd($data);
             // dd('ExcelReport');
             set_time_limit(1000000);
@@ -691,8 +688,7 @@
             dd('---');
         }
 
-        public static function HandleFormConditions($radio_questions)
-        {
+        public static function HandleFormConditions($radio_questions) {
             $data['conditions'] = [];
             foreach ($radio_questions as $key => $value) {
                 $question = AvailableQuestion::find($key);
@@ -710,5 +706,61 @@
 
                 return redirect()->route('admin.evaluation.unregistered_search');
             }
+        }
+
+        /**
+        * ---
+        */  
+        public static function checkLoginRequired($login_required) {
+            $response = true;
+            if ($login_required AND !\Auth::user()) {
+                $response = false;
+            }
+            return $response;
+        }
+        
+        public static function checkEvaluationValidity($evaluation_settings) {
+            $response = false;
+            if ($evaluation_settings['poll_start'] == null OR $evaluation_settings['end_of_polls'] == null) {
+                $response = true;
+            } else {
+                $today = date(now());
+                if ($today > $evaluation_settings['poll_start'] AND $today < $evaluation_settings['end_of_polls']) {
+                    $response = true;
+                }
+            }
+
+            return $response;
+        }
+
+        public static function checkSingleResponsePerUser($evaluation_id, $answered_only_once_per_user) {
+            $response = true;
+            if ($answered_only_once_per_user) {
+                $user = \Auth::user();
+                $completed_evaluation = CompletedEvaluation::where([
+                    ['user_id', '=', $user->id],
+                    ['evaluation_id', '=', $evaluation_id],
+                ])->first();
+
+                if ($completed_evaluation) {
+                    $response = false;
+                }
+            }
+
+            return $response;
+        }
+
+        public static function checkAllowedsGroups($alloweds_groups) {
+            $response = true;
+            $group = \Auth::user()->Group;
+            
+            if ($alloweds_groups->count()) {
+                $alloweds_groups_array = $alloweds_groups->pluck('group_id')->toArray();
+                if (!in_array($group->id, $alloweds_groups_array)) {
+                    $response = false;
+                }
+            }
+
+            return $response;
         }
 	}

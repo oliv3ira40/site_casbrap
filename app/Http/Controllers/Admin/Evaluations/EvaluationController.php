@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Helpers\HelpEvaluation;
 use App\Helpers\HelpAdmin;
 
+use App\Models\Admin\Group;
+
 use App\Models\Site\Evaluation\AllowedGroup;
 use App\Models\Site\Evaluation\AvailableQuestion;
 use App\Models\Site\Evaluation\CompletedEvaluation;
@@ -57,14 +59,28 @@ class EvaluationController extends Controller
         $data['question_topics'] = $data['evaluation']->QuestionTopics()->count();
         $data['available_questions'] = $data['evaluation']->AvailableQuestions()->count();
         $data['evaluation_settings'] = $data['evaluation']->EvaluationSettings;
+        $data['evaluation_groups'] = $data['evaluation_settings']->AllowedsGroups->pluck('group_id')->toArray();
+        $data['groups'] = Group::where('tag', '!=', 'developer')->where('tag', '!=', 'public')->get();
 
-        // dd($data);
+        $data['evaluation_settings']->poll_date = null;
+        if ($data['evaluation_settings']->poll_start != null OR $data['evaluation_settings']->end_of_polls != null) {
+            $data['evaluation_settings']->poll_date = $data['evaluation_settings']->poll_start->format('Y-m-d H:i') .' - '. $data['evaluation_settings']->end_of_polls->format('Y-m-d H:i');
+        }
 
         return view('Admin.site.evaluation.edit', compact('data'));
     }
     function update(Request $req) {
         $data = $req->all();
         $data['evaluation']['name_slug'] = str_slug($data['evaluation']['name']);
+        
+        $data['evaluation_settings']['poll_start'] = null;
+        $data['evaluation_settings']['end_of_polls'] = null;
+        if ($data['evaluation_settings']['poll_date'] != null) {
+            $poll_date = explode(' - ', $data['evaluation_settings']['poll_date']);
+
+            $data['evaluation_settings']['poll_start'] = $poll_date[0].':00';
+            $data['evaluation_settings']['end_of_polls'] = $poll_date[1].':00';
+        }
 
         $evaluation = Evaluation::find($data['evaluation']['id']);
         $evaluation->update($data['evaluation']);
@@ -75,6 +91,15 @@ class EvaluationController extends Controller
         if (!isset($data['evaluation_settings']['login_required'])) $data['evaluation_settings']['login_required'] = 0; 
         $evaluation_settings = $evaluation->EvaluationSettings;
         $evaluation_settings->update($data['evaluation_settings']);
+
+        $evaluation_settings->AllowedsGroups()->delete();
+        if (isset($data['specific_groups'])) {
+            $data_allowed_group['evaluation_setting_id'] = $evaluation_settings->id;
+            foreach ($data['specific_groups'] as $specific_group) {
+                $data_allowed_group['group_id'] = $specific_group;
+                AllowedGroup::create($data_allowed_group);
+            }
+        }
 
         session()->flash('notification', 'success:Pesquisa atualizada!');
         return redirect()->route('adm.evaluation.edit', $evaluation->id);
@@ -98,7 +123,6 @@ class EvaluationController extends Controller
     function report($id) {
         $evaluation = Evaluation::find($id);
         $data = HelpEvaluation::getDataForReporting($evaluation);
-        // dd($data);
 
         return view('Admin.site.evaluation.report', compact('data'));
     }

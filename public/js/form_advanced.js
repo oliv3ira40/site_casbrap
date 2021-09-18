@@ -162,7 +162,7 @@ $(function()
 
     $('.input-daterange-timepicker').daterangepicker({
         timePicker: true,
-        format: 'MM/DD/YYYY HH:mm',
+        format: 'YYYY-MM-DD HH:mm',
         timePickerIncrement: 10,
         timePicker24Hour: true,
         timePickerSeconds: false,
@@ -171,7 +171,7 @@ $(function()
         cancelClass: 'btn-danger',
         autoUpdateInput: false,
         locale: {
-            format: 'MM/DD/YYYY HH:mm',
+            format: 'YYYY-MM-DD HH:mm',
             applyLabel: 'Aplicar',
             cancelLabel: 'Limpar',
             fromLabel: 'Até',
@@ -183,7 +183,7 @@ $(function()
         }
     });
     $('.input-daterange-timepicker').on('apply.daterangepicker', function(ev, picker) {
-        $(this).val(picker.startDate.format('MM/DD/YYYY HH:mm') + ' - ' + picker.endDate.format('MM/DD/YYYY HH:mm'));
+        $(this).val(picker.startDate.format('YYYY-MM-DD HH:mm') + ' - ' + picker.endDate.format('YYYY-MM-DD HH:mm'));
     });
     $('.input-daterange-timepicker').on('cancel.daterangepicker', function(ev, picker) {
         $(this).val('');

@@ -60,11 +60,11 @@
                                             Editar
                                         </a>
                                     @endif
-                                    @if (in_array('adm.evaluation.alert', HelpAdmin::permissionsUser()))
+                                    {{-- @if (in_array('adm.evaluation.alert', HelpAdmin::permissionsUser()))
                                         <a href="{{ route('adm.evaluation.alert', $evaluation->id) }}" class="my-btn btn btn-danger btn-xs btn-trans">
                                             Excluir
                                         </a>
-                                    @endif
+                                    @endif --}}
                                 </td>
                             </tr>
                         @endforeach

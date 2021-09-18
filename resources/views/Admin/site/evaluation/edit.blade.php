@@ -88,23 +88,19 @@
                                             </small>
                                         @endif
                                         <div class="check-box-position">
-                                            {{-- <select class="select2 select2-multiple" multiple="multiple" multiple data-placeholder="Choose ...">
-                                                <option value="AK">Alaska</option>
-                                                <option value="HI">Hawaii</option>
-                                            </select> --}}
-                                            {!! Form::select('asdasda',
-                                                [
-                                                    '0'=>0,
-                                                    '1'=>1,
-                                                ],
-                                                null,
-                                                [
-                                                    'class'=>'select2 select2-multiple',
-                                                    'multiple'=>'multiple',
-                                                    'multiple',
-                                                    'data-placeholder'=>' Choose ...',
-                                                ]
-                                            ) !!}
+                                            <select name="specific_groups[]" class="select2 select2-multiple" multiple="multiple" data-placeholder="Selecione um grupo...">
+                                                @foreach ($data['groups'] as $group)
+                                                    @if (in_array($group->id, $data['evaluation_groups']))
+                                                        <option selected value="{{ $group->id }}">
+                                                            {{ $group->name }}
+                                                        </option>
+                                                    @else
+                                                        <option value="{{ $group->id }}">
+                                                            {{ $group->name }}
+                                                        </option>
+                                                    @endif
+                                                @endforeach
+                                            </select>
                                         </div>
                                     </div>
                                 </div>
@@ -120,8 +116,8 @@
                                             </small>
                                         @endif
                                         <div class="check-box-position">
-                                            {!! Form::text('evaluation_settings[aaaaaa]', $data['evaluation_settings']->aaaaaa, [
-                                                'class'=>"form-control input-daterange-timepicker"
+                                            {!! Form::text('evaluation_settings[poll_date]', $data['evaluation_settings']->poll_date, [
+                                                'class'=>"form-control input-daterange-timepicker", "autocomplete"=>"off" 
                                             ]) !!}
                                         </div>
                                     </div>
@@ -159,26 +155,6 @@
     </div>
 
     <div class="row">
-        {{-- <a href="{{ route('adm.image_for_evaluation.list', $data['evaluation']->id) }}" class="col-md-3">
-            <div class="card-box">
-                <h4 class="header-title mt-0 m-b-10">Imagens anexadas</h4>
-
-                <div class="widget-box-2">
-                    <div class="widget-detail-2">
-                        <h2 class="mb-0 text-danger">
-                            {{ $data['images_for_evaluation'] }}
-                        </h2>
-                        <p class="text-muted m-b-20">Registros</p>
-                    </div>
-                    <div class="progress progress-bar-danger-alt progress-sm mb-0">
-                        <div class="progress-bar progress-bar-danger" role="progressbar"
-                            aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"
-                            style="width: 100%;">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </a> --}}
 
         <a href="{{ route('adm.question_topic.list', $data['evaluation']->id) }}" class="col-md-4">
             <div class="card-box">
@@ -222,7 +198,7 @@
             </div>
         </a>
         
-        <a href="#" class="col-md-4">
+        <a href="{{ route('adm.evaluation.report', $data['evaluation']->id) }}" class="col-md-4">
             <div class="card-box">
                 <h4 class="header-title mt-0 m-b-10">Pesquisas finalizadas</h4>
 

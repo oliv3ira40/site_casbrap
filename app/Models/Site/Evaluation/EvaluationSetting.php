@@ -17,4 +17,10 @@ class EvaluationSetting extends Model
         'evaluation_id',
     ];
     protected $dates = ['created_at', 'poll_start', 'end_of_polls'];
+
+
+
+    function AllowedsGroups() {
+        return $this->hasMany('App\Models\Site\Evaluation\AllowedGroup', 'evaluation_setting_id');
+    }
 }
